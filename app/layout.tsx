@@ -58,9 +58,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <span className="text-lg font-bold tracking-wide" style={{ color: "var(--text)" }}>星空ノート</span>
               <span className="text-xs" style={{ color: "var(--accent)" }}>撮る・観る</span>
             </Link>
-            <nav className="flex items-center gap-5 text-sm" style={{ color: "var(--muted)" }}>
-              <Link href="/tools/500-rule" className="hover:opacity-80">ツール</Link>
+            <nav className="flex items-center gap-4 sm:gap-5 text-sm" style={{ color: "var(--muted)" }}>
+              <Link href="/gear" className="hover:opacity-80" style={{ color: "var(--text)" }}>ギア</Link>
+              <Link href="/gallery" className="hover:opacity-80">作例</Link>
               <Link href="/guide" className="hover:opacity-80">ガイド</Link>
+              <Link href="/tools/500-rule" className="hover:opacity-80">ツール</Link>
             </nav>
           </div>
         </header>
@@ -71,6 +73,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <p>© 2026 星空ノート — 星を撮る・観るためのガイド</p>
             <nav className="flex gap-4 flex-wrap">
+              <Link href="/gear" className="hover:opacity-80">ギア</Link>
+              <Link href="/gallery" className="hover:opacity-80">作例</Link>
               <Link href="/guide" className="hover:opacity-80">ガイド</Link>
               <Link href="/tools/500-rule" className="hover:opacity-80">ツール</Link>
               <Link href="/about" className="hover:opacity-80">このサイトについて</Link>

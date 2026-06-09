@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { PRODUCTS } from "@/lib/products";
 
 export default function Home() {
+  const featured = PRODUCTS.slice(0, 4);
   return (
     <div className="max-w-5xl mx-auto px-4">
       {/* Hero */}
@@ -9,17 +11,43 @@ export default function Home() {
           星を、<span style={{ color: "var(--accent)" }}>撮る</span>。<span style={{ color: "var(--accent2)" }}>観る</span>。
         </h1>
         <p className="mt-4 text-base sm:text-lg" style={{ color: "var(--muted)" }}>
-          星空撮影の設定・機材・季節の早見と、天体観望の入門ガイド。<br className="hidden sm:block" />
-          まずは「点で写る最大シャッタースピード」を計算してみよう。
+          星空撮影の機材を「選ぶ」から「使いこなす」まで。<br className="hidden sm:block" />
+          要点・使い方・読者の作例で、あなたの一枚を後押しします。
         </p>
-        <div className="mt-8">
+        <div className="mt-8 flex flex-wrap gap-3 justify-center">
           <Link
-            href="/tools/500-rule"
+            href="/gear"
             className="inline-block rounded-lg px-6 py-3 font-bold"
             style={{ background: "var(--accent)", color: "#06121a" }}
           >
-            500ルール計算機を使う →
+            星空撮影ギアを見る →
           </Link>
+          <Link
+            href="/gallery"
+            className="inline-block rounded-lg px-6 py-3 font-bold border"
+            style={{ borderColor: "var(--border)", color: "var(--text)" }}
+          >
+            みんなの作例を見る
+          </Link>
+        </div>
+      </section>
+
+      {/* Gear（核） */}
+      <section className="py-6">
+        <div className="flex items-baseline justify-between mb-4">
+          <h2 className="text-xs uppercase tracking-widest" style={{ color: "var(--muted)" }}>星空撮影ギア</h2>
+          <Link href="/gear" className="text-xs hover:underline" style={{ color: "var(--accent)" }}>すべて見る →</Link>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {featured.map((p) => (
+            <Link key={p.slug} href={`/gear/${p.slug}`}
+              className="rounded-xl border p-5 block transition hover:-translate-y-0.5"
+              style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
+              <div className="text-2xl mb-2">{p.emoji}</div>
+              <h3 className="font-bold text-sm mb-1 leading-snug">{p.name}</h3>
+              <p className="text-xs" style={{ color: "var(--muted)" }}>{p.tagline}</p>
+            </Link>
+          ))}
         </div>
       </section>
 
