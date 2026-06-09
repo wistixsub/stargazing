@@ -4,3 +4,6 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://hoshizora-n
 export const SITE_NAME = "星空ノート";
 // GA4：測定ID。env優先・無ければ既定値で計測有効。
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-B4C9FG3VWX";
+// 作例投稿フォーム（Web3Forms）。アクセスキーを設定すると投稿フォームが有効化（未設定なら準備中表示）。
+// 取得：https://web3forms.com で無料アクセスキーを発行 → Vercel env NEXT_PUBLIC_WEB3FORMS_KEY に設定。
+export const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";

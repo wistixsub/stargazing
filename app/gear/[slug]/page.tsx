@@ -123,6 +123,15 @@ export default async function GearDetail({ params }: { params: Promise<{ slug: s
             ※スペックは代表値です。購入前に公式情報で必ずご確認ください（裏取り・更新を進めています）。
           </p>
         )}
+        {p.sourceUrl && (
+          <p className="mt-2 text-[11px]" style={{ color: "var(--muted)", opacity: 0.8 }}>
+            出典：
+            <a href={p.sourceUrl} target="_blank" rel="nofollow noopener" className="underline" style={{ color: "var(--accent)" }}>
+              メーカー公式情報
+            </a>
+            （価格・仕様は変更される場合があります）
+          </p>
+        )}
       </section>
 
       {/* 使い方（買った後） */}

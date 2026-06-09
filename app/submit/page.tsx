@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SubmitForm from "./SubmitForm";
 
 export const metadata: Metadata = {
   title: "作例を投稿する｜あなたの星空写真を機材とともに",
@@ -36,17 +37,9 @@ export default function Submit() {
         </ol>
       </section>
 
-      {/* フォーム（バックエンド準備中＝プレースホルダ） */}
-      <section className="mt-8 rounded-xl border p-5" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
-        <h2 className="text-sm font-bold mb-2">投稿フォーム</h2>
-        <p className="text-sm" style={{ color: "var(--muted)" }}>
-          現在、投稿フォームを準備中です。公開までしばらくお待ちください。
-        </p>
-        <button disabled
-          className="mt-3 rounded-lg px-5 py-2.5 text-sm font-bold opacity-60 cursor-not-allowed"
-          style={{ background: "var(--surface2)", color: "var(--muted)" }}>
-          フォーム準備中
-        </button>
+      {/* 投稿フォーム（Web3Forms連携・キー未設定時は準備中表示） */}
+      <section className="mt-8">
+        <SubmitForm />
       </section>
 
       {/* 投稿ガイドライン（規約ドラフト） */}
