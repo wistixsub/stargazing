@@ -1,5 +1,6 @@
-// サイト共通定数。独自ドメイン取得後は NEXT_PUBLIC_SITE_URL を設定するだけで全箇所反映。
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+// サイト共通定数。env（NEXT_PUBLIC_*）があれば優先、無ければ本番の既定値を使う。
+// SITE_URL・GA_ID はいずれも公開情報のため、既定値をコードに持たせてOK（envで上書き可）。
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://hoshizora-note.com";
 export const SITE_NAME = "星空ノート";
-// GA4：本番で NEXT_PUBLIC_GA_ID を設定すると計測が有効化（未設定なら無効）。
-export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
+// GA4：測定ID。env優先・無ければ既定値で計測有効。
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-B4C9FG3VWX";
