@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# フリー素材オリジナル（ローカル保管・リサイズ済をpublic/photos/で使用）
+imagePhoto/

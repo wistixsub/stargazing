@@ -8,8 +8,13 @@ export default function Home() {
     <div className="max-w-5xl mx-auto px-4">
       {/* Hero */}
       <section className="relative -mx-4 px-4 py-20 sm:py-24 text-center overflow-hidden rounded-b-3xl"
-        style={{ background: "radial-gradient(120% 90% at 50% 0%, #16224a 0%, #0b1020 60%)" }}>
-        <StarField count={90} />
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(11,16,32,.62), rgba(11,16,32,.78) 70%, #0b1020), url('/photos/hero-milkyway.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center 35%",
+        }}>
+        <StarField count={40} />
         <div className="relative">
           <h1 className="text-3xl sm:text-5xl font-bold leading-tight">
             星を、<span style={{ color: "var(--accent)" }}>撮る</span>。<span style={{ color: "var(--accent2)" }}>観る</span>。
