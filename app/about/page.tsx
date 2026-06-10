@@ -41,21 +41,33 @@ export default function AboutPage() {
             撮影機材・光学機器メーカー様、専門ショップ様向けに、関連記事での掲載枠（純広告）等のご相談を承ります（媒体資料は整備中）。
             掲載は記事の中立性を損なわない範囲で行います。
           </p>
-          <a
-            href="mailto:contact@example.com"
+          <Link
+            href="/submit"
             className="mt-3 inline-block rounded-lg px-5 py-2.5 font-bold text-sm"
             style={{ background: "var(--accent)", color: "#06121a" }}
           >
-            掲載について問い合わせる
-          </a>
-          <p className="mt-2 text-xs" style={{ opacity: 0.7 }}>※ 連絡先は独自ドメイン取得後に有効化します。</p>
+            フォームから問い合わせる
+          </Link>
+          <p className="mt-2 text-xs" style={{ opacity: 0.7 }}>※ 件名に「掲載について」とご記入ください。専用メール窓口は整備中です。</p>
         </div>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-lg font-bold mb-2">運営者情報</h2>
+        <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+          当サイトは個人が運営しています。星空撮影の入門情報を一次情報（メーカー公式）に基づいて整理し、
+          広告・アフィリエイトの有無で評価を変えない方針です（詳細は
+          <Link href="/privacy" className="underline mx-1" style={{ color: "var(--accent)" }}>プライバシーポリシー</Link>
+          ）。
+        </p>
       </section>
 
       <section className="mt-8">
         <h2 className="text-lg font-bold mb-2">お問い合わせ</h2>
         <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-          内容の誤り報告・ご相談は上記メールまで。まずは
+          内容の誤り報告・ご相談は
+          <Link href="/submit" className="underline mx-1" style={{ color: "var(--accent)" }}>フォーム</Link>
+          まで。まずは
           <Link href="/tools/500-rule" className="underline mx-1" style={{ color: "var(--accent)" }}>ツール</Link>
           や
           <Link href="/guide" className="underline mx-1" style={{ color: "var(--accent)" }}>ガイド</Link>

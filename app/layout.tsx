@@ -78,6 +78,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Link href="/guide" className="hover:opacity-80">ガイド</Link>
               <Link href="/tools/500-rule" className="hover:opacity-80">ツール</Link>
               <Link href="/about" className="hover:opacity-80">このサイトについて</Link>
+              <Link href="/privacy" className="hover:opacity-80">プライバシーポリシー</Link>
             </nav>
           </div>
         </footer>

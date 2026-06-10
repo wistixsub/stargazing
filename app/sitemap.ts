@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { p: "/tools/moon-calendar", cf: "monthly", pr: 0.9 },
     { p: "/guide", cf: "weekly", pr: 0.7 },
     { p: "/about", cf: "monthly", pr: 0.4 },
+    { p: "/privacy", cf: "monthly", pr: 0.3 },
     { p: "/guide/tonight-sky", cf: "monthly", pr: 0.8 },
     { p: "/guide/binoculars-vs-telescope", cf: "monthly", pr: 0.8 },
     { p: "/guide/settings", cf: "monthly", pr: 0.8 },
