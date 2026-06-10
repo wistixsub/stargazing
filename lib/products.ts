@@ -29,6 +29,8 @@ export type Product = {
   relatedGuides: RelatedGuide[];
   // ── 購入導線 ──
   purchase: PurchaseLink[];
+  /** アフィリエイト検索キーワード（設定すると楽天/Yahoo!のもしも経由リンクを自動生成。lib/affiliate.ts 参照） */
+  affiliateKeyword?: string;
   verified: boolean; // スペックの公式裏取り済みか
   sourceUrl?: string; // 出典（メーカー公式ページ等）
 };
@@ -71,6 +73,7 @@ export const PRODUCTS: Product[] = [
       { href: "/guide/settings", label: "星空撮影の設定 完全ガイド" },
     ],
     purchase: [{ label: "購入先（提携準備中）" }],
+    affiliateKeyword: "ケンコー スカイメモS",
     verified: true,
     sourceUrl: "https://www.kenko-tokina.co.jp/optics/tele_scope/sky_memo/4961607455159.html",
   },
@@ -110,6 +113,7 @@ export const PRODUCTS: Product[] = [
       { href: "/tools/500-rule", label: "500ルール計算機" },
     ],
     purchase: [{ label: "購入先（提携準備中）" }],
+    affiliateKeyword: "SAMYANG 14mm F2.8",
     verified: true,
   },
   {
@@ -148,6 +152,7 @@ export const PRODUCTS: Product[] = [
       { href: "/guide/star-tracker", label: "ポータブル赤道儀は必要か" },
     ],
     purchase: [{ label: "購入先（提携準備中）" }],
+    affiliateKeyword: "スリック ライトカーボン E83",
     verified: true,
     sourceUrl: "https://www.kenko-tokina.co.jp/slik/carbon-series/light/e83ii.html",
   },
@@ -187,6 +192,7 @@ export const PRODUCTS: Product[] = [
       { href: "/guide/binoculars-vs-telescope", label: "双眼鏡 vs 望遠鏡" },
     ],
     purchase: [{ label: "購入先（提携準備中）" }],
+    affiliateKeyword: "ビクセン 天体観測用ライト SG-L02",
     verified: true,
     sourceUrl: "https://www.vixen.co.jp/product/71089_8/",
   },
@@ -224,6 +230,7 @@ export const PRODUCTS: Product[] = [
       { href: "/guide/milkyway-season", label: "天の川が見える時期と方角" },
     ],
     purchase: [{ label: "購入先（提携準備中）" }],
+    affiliateKeyword: "タイマーリモートスイッチ カメラ",
     verified: false,
   },
   {
@@ -260,6 +267,7 @@ export const PRODUCTS: Product[] = [
       { href: "/guide/tonight-sky", label: "季節別・見える星座と天体" },
     ],
     purchase: [{ label: "購入先（提携準備中）" }],
+    affiliateKeyword: "プロソフトン クリア",
     verified: true,
     sourceUrl: "https://www.kenko-tokina.co.jp/imaging/filter/soft/prosofton_clear.html",
   },
@@ -298,6 +306,7 @@ export const PRODUCTS: Product[] = [
       { href: "/guide/telescope-beginner", label: "はじめての天体望遠鏡の選び方" },
     ],
     purchase: [{ label: "購入先（提携準備中）" }],
+    affiliateKeyword: "ビクセン アスコット ZR10×50WP",
     verified: true,
     sourceUrl: "https://www.vixen.co.jp/product/1563_06/",
   },

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { PRODUCTS, getProduct } from "@/lib/products";
 import { getSamplesByGear } from "@/lib/samples";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { NETWORKS, affiliateClickUrl, impressionUrl } from "@/lib/affiliate";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -71,21 +72,45 @@ export default async function GearDetail({ params }: { params: Promise<{ slug: s
       <section className="mt-6 rounded-xl border p-5" style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
         <h2 className="text-sm font-bold mb-2">購入を検討する</h2>
         <div className="flex flex-wrap gap-2">
-          {p.purchase.map((b) =>
-            b.url ? (
-              <a key={b.label} href={b.url} target="_blank" rel="nofollow sponsored noopener"
-                className="rounded-lg px-4 py-2 text-sm font-bold" style={{ background: "var(--accent)", color: "#06121a" }}>
-                {b.label} →
-              </a>
-            ) : (
-              <span key={b.label} className="rounded-lg px-4 py-2 text-sm" style={{ background: "var(--surface2)", color: "var(--muted)" }}>
-                {b.label}
+          {p.affiliateKeyword ? (
+            <>
+              {NETWORKS.map((n) => (
+                <a
+                  key={n.key}
+                  href={affiliateClickUrl(n, p.affiliateKeyword!)}
+                  target="_blank"
+                  rel="nofollow sponsored noopener"
+                  className="rounded-lg px-4 py-2 text-sm font-bold"
+                  style={{ background: "var(--accent)", color: "#06121a" }}
+                >
+                  {n.label} →
+                </a>
+              ))}
+              <span className="rounded-lg px-4 py-2 text-sm" style={{ background: "var(--surface2)", color: "var(--muted)" }}>
+                Amazon（準備中）
               </span>
+              {NETWORKS.map((n) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img key={`imp-${n.key}`} src={impressionUrl(n)} width={1} height={1} alt="" style={{ border: "none" }} />
+              ))}
+            </>
+          ) : (
+            p.purchase.map((b) =>
+              b.url ? (
+                <a key={b.label} href={b.url} target="_blank" rel="nofollow sponsored noopener"
+                  className="rounded-lg px-4 py-2 text-sm font-bold" style={{ background: "var(--accent)", color: "#06121a" }}>
+                  {b.label} →
+                </a>
+              ) : (
+                <span key={b.label} className="rounded-lg px-4 py-2 text-sm" style={{ background: "var(--surface2)", color: "var(--muted)" }}>
+                  {b.label}
+                </span>
+              )
             )
           )}
         </div>
         <p className="mt-2 text-[11px]" style={{ color: "var(--muted)", opacity: 0.8 }}>
-          ※購入リンクには広告（アフィリエイト）を含む場合があります。価格・在庫は各販売店をご確認ください。
+          ※購入リンクは広告（アフィリエイト）です。リンク先は各モールの検索結果ページです。価格・在庫は各販売店をご確認ください。
         </p>
       </section>
 
