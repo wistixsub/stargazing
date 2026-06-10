@@ -148,6 +148,7 @@ export const PRODUCTS: Product[] = [
       { heading: "3. ミラーアップ／電子先幕", body: "シャッターショックを抑える設定で、長秒露光の微ブレを減らす。" },
     ],
     relatedGuides: [
+      { href: "/guide/slik-e83ii", label: "星空向け三脚の選び方：本機を実例に" },
       { href: "/guide/settings", label: "星空撮影の設定 完全ガイド" },
       { href: "/guide/star-tracker", label: "ポータブル赤道儀は必要か" },
     ],
@@ -188,6 +189,7 @@ export const PRODUCTS: Product[] = [
       { heading: "3. 撮影中は消す", body: "長秒露光中は消灯。レンズ前を横切る光はカブリの原因。" },
     ],
     relatedGuides: [
+      { href: "/guide/sg-l02", label: "赤色ライトはなぜ必要か：本機のガイド" },
       { href: "/guide/settings", label: "星空撮影の設定 完全ガイド" },
       { href: "/guide/binoculars-vs-telescope", label: "双眼鏡 vs 望遠鏡" },
     ],

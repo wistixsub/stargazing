@@ -15,6 +15,8 @@ const GUIDES: { e: string; t: string; g: string; href?: string }[] = [
   { e: "🧭", t: "スカイメモSの使い方・設定ガイド", g: "撮る", href: "/guide/skymemo-s" },
   { e: "🔭", t: "SAMYANG 14mm F2.8で星空を撮る設定", g: "撮る", href: "/guide/samyang-14mm" },
   { e: "✨", t: "プロソフトン クリアの効果と使い方", g: "撮る", href: "/guide/prosofton-clear" },
+  { e: "📐", t: "星空向け三脚の選び方（ライトカーボン E83 II実例）", g: "撮る", href: "/guide/slik-e83ii" },
+  { e: "🔦", t: "赤色ライトはなぜ必要か（SG-L02ガイド）", g: "撮る", href: "/guide/sg-l02" },
   { e: "🔭", t: "10×50双眼鏡で星空観望（アスコット ZR10×50WP）", g: "観る", href: "/guide/ascot-zr10x50" },
   { e: "🌙", t: "月齢と撮影適期の考え方", g: "撮る", href: "/guide/moon-phase" },
   { e: "🔭", t: "はじめての天体望遠鏡の選び方", g: "観る", href: "/guide/telescope-beginner" },

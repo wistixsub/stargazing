@@ -17,6 +17,7 @@ export default function Page() {
       lead="赤道儀は星を追尾して長時間露光を可能にする機材。淡い天の川や星雲を狙うなら強力ですが、全員に必須ではありません。要る人・要らない人を整理します。"
       datePublished="2026-06-06"
       related={[
+        { href: "/guide/skymemo-s", label: "実例：スカイメモSの使い方・設定ガイド" },
         { href: "/guide/settings", label: "星空撮影の設定 完全ガイド" },
         { href: "/tools/500-rule", label: "500ルール計算機" },
         { href: "/guide/telescope-beginner", label: "【観る】はじめての天体望遠鏡の選び方" },

@@ -17,6 +17,7 @@ export default function Page() {
       lead="観望デビューの1台は双眼鏡？望遠鏡？ 実は最初の1台に双眼鏡を選ぶ人は多いです。それぞれの得意・不得意を比べます。"
       datePublished="2026-06-06"
       related={[
+        { href: "/guide/ascot-zr10x50", label: "実例：10×50双眼鏡で星空観望（アスコット）" },
         { href: "/guide/telescope-beginner", label: "はじめての天体望遠鏡の選び方" },
         { href: "/guide/telescope-aperture", label: "口径別・望遠鏡で見える天体の早見" },
         { href: "/guide/tonight-sky", label: "季節別・見える星座と天体" },

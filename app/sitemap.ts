@@ -26,6 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { p: "/guide/samyang-14mm", cf: "monthly", pr: 0.8 },
     { p: "/guide/prosofton-clear", cf: "monthly", pr: 0.8 },
     { p: "/guide/ascot-zr10x50", cf: "monthly", pr: 0.8 },
+    { p: "/guide/slik-e83ii", cf: "monthly", pr: 0.8 },
+    { p: "/guide/sg-l02", cf: "monthly", pr: 0.8 },
     { p: "/guide/moon-phase", cf: "monthly", pr: 0.8 },
     { p: "/guide/telescope-beginner", cf: "monthly", pr: 0.8 },
     { p: "/guide/telescope-aperture", cf: "monthly", pr: 0.8 },
