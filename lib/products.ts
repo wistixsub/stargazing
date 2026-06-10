@@ -255,6 +255,7 @@ export const PRODUCTS: Product[] = [
       { heading: "3. 構図に星座を入れる", body: "オリオンや夏の大三角など、形が分かる星座を構図に入れると効果が活きる。" },
     ],
     relatedGuides: [
+      { href: "/guide/prosofton-clear", label: "プロソフトン クリアの効果と使い方" },
       { href: "/guide/lens", label: "星空向けレンズの選び方" },
       { href: "/guide/tonight-sky", label: "季節別・見える星座と天体" },
     ],
@@ -292,6 +293,7 @@ export const PRODUCTS: Product[] = [
       { heading: "3. 暗順応", body: "目が暗闇に慣れる15〜20分で見える星が増える。赤色ライトで手元を照らす。" },
     ],
     relatedGuides: [
+      { href: "/guide/ascot-zr10x50", label: "10×50双眼鏡で星空観望：本機の楽しみ方" },
       { href: "/guide/binoculars-vs-telescope", label: "双眼鏡 vs 望遠鏡" },
       { href: "/guide/telescope-beginner", label: "はじめての天体望遠鏡の選び方" },
     ],
