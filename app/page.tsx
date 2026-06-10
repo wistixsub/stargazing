@@ -1,34 +1,39 @@
 import Link from "next/link";
 import { PRODUCTS } from "@/lib/products";
+import StarField from "@/components/StarField";
 
 export default function Home() {
   const featured = PRODUCTS.slice(0, 4);
   return (
     <div className="max-w-5xl mx-auto px-4">
       {/* Hero */}
-      <section className="py-16 text-center">
-        <h1 className="text-3xl sm:text-5xl font-bold leading-tight">
-          星を、<span style={{ color: "var(--accent)" }}>撮る</span>。<span style={{ color: "var(--accent2)" }}>観る</span>。
-        </h1>
-        <p className="mt-4 text-base sm:text-lg" style={{ color: "var(--muted)" }}>
-          星空撮影の機材を「選ぶ」から「使いこなす」まで。<br className="hidden sm:block" />
-          要点・使い方・読者の作例で、あなたの一枚を後押しします。
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3 justify-center">
-          <Link
-            href="/gear"
-            className="inline-block rounded-lg px-6 py-3 font-bold"
-            style={{ background: "var(--accent)", color: "#06121a" }}
-          >
-            星空撮影ギアを見る →
-          </Link>
-          <Link
-            href="/gallery"
-            className="inline-block rounded-lg px-6 py-3 font-bold border"
-            style={{ borderColor: "var(--border)", color: "var(--text)" }}
-          >
-            みんなの作例を見る
-          </Link>
+      <section className="relative -mx-4 px-4 py-20 sm:py-24 text-center overflow-hidden rounded-b-3xl"
+        style={{ background: "radial-gradient(120% 90% at 50% 0%, #16224a 0%, #0b1020 60%)" }}>
+        <StarField count={90} />
+        <div className="relative">
+          <h1 className="text-3xl sm:text-5xl font-bold leading-tight">
+            星を、<span style={{ color: "var(--accent)" }}>撮る</span>。<span style={{ color: "var(--accent2)" }}>観る</span>。
+          </h1>
+          <p className="mt-4 text-base sm:text-lg" style={{ color: "var(--muted)" }}>
+            星空撮影の機材を「選ぶ」から「使いこなす」まで。<br className="hidden sm:block" />
+            要点・使い方・ツールで、あなたの一枚を後押しします。
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3 justify-center">
+            <Link
+              href="/gear"
+              className="inline-block rounded-lg px-6 py-3 font-bold"
+              style={{ background: "var(--accent)", color: "#06121a" }}
+            >
+              星空撮影ギアを見る →
+            </Link>
+            <Link
+              href="/gallery"
+              className="inline-block rounded-lg px-6 py-3 font-bold border"
+              style={{ borderColor: "var(--border)", color: "var(--text)" }}
+            >
+              みんなの作例を見る
+            </Link>
+          </div>
         </div>
       </section>
 

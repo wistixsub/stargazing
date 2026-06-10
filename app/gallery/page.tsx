@@ -24,6 +24,28 @@ export default function Gallery() {
         </Link>
       </p>
 
+      {samples.length === 0 && (
+        <div className="mt-10 rounded-2xl border p-8 sm:p-12 text-center"
+          style={{ borderColor: "var(--border)", background: "var(--surface)" }}>
+          <div className="text-5xl mb-4" aria-hidden="true">🌌</div>
+          <h2 className="text-lg sm:text-xl font-bold">作例ギャラリー、第1号を募集中です</h2>
+          <p className="mt-3 text-sm leading-relaxed max-w-xl mx-auto" style={{ color: "var(--muted)" }}>
+            このギャラリーには、読者のみなさんが撮った<strong>本物の星空写真だけ</strong>を掲載します。
+            あなたの一枚に使用機材のタグを付けて、これから星を撮る人の道しるべにしませんか。
+            最初の数枚は、サイト各所で大きく紹介します。
+          </p>
+          <p className="mt-6">
+            <Link href="/submit" className="inline-block rounded-lg px-6 py-3 text-sm font-bold"
+              style={{ background: "var(--accent)", color: "#06121a" }}>
+              第1号として作例を投稿する →
+            </Link>
+          </p>
+          <p className="mt-4 text-xs" style={{ color: "var(--muted)", opacity: 0.8 }}>
+            撮影データ（ISO・SS・F値）や使用機材も一緒に教えていただけると、読者の参考になります。
+          </p>
+        </div>
+      )}
+
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {samples.map((s) => {
           const gear = gearOf(s);
