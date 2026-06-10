@@ -12,6 +12,8 @@ const GUIDES: { e: string; t: string; g: string; href?: string }[] = [
   { e: "📱", t: "スマホで星空を撮る方法", g: "撮る", href: "/guide/smartphone" },
   { e: "🔭", t: "星空向けレンズの選び方（焦点距離×明るさ）", g: "撮る", href: "/guide/lens" },
   { e: "🧭", t: "ポータブル赤道儀は必要か", g: "撮る", href: "/guide/star-tracker" },
+  { e: "🧭", t: "スカイメモSの使い方・設定ガイド", g: "撮る", href: "/guide/skymemo-s" },
+  { e: "🔭", t: "SAMYANG 14mm F2.8で星空を撮る設定", g: "撮る", href: "/guide/samyang-14mm" },
   { e: "🌙", t: "月齢と撮影適期の考え方", g: "撮る", href: "/guide/moon-phase" },
   { e: "🔭", t: "はじめての天体望遠鏡の選び方", g: "観る", href: "/guide/telescope-beginner" },
   { e: "🪐", t: "口径別・望遠鏡で見える天体の早見", g: "観る", href: "/guide/telescope-aperture" },
