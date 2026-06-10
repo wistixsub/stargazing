@@ -35,13 +35,28 @@ export default function SubmitForm() {
     setStatus("sending");
     setError("");
 
-    const data = new FormData(form);
-    data.append("access_key", WEB3FORMS_KEY);
-    data.append("subject", "星空ノート 作例投稿");
-    data.append("from_name", "星空ノート 作例投稿フォーム");
+    // JSONで送る：multipartだと日本語の項目名がヘッダー側に乗りメールで文字化けするため
+    const fd = new FormData(form);
+    const payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: "星空ノート 作例投稿",
+      from_name: "星空ノート 作例投稿フォーム",
+      botcheck: fd.get("botcheck") ? true : false,
+      作品タイトル: fd.get("作品タイトル") || "",
+      ニックネーム: fd.get("ニックネーム") || "",
+      撮影地: fd.get("撮影地") || "",
+      撮影データ: fd.get("撮影データ") || "",
+      使用機材: fd.getAll("使用機材").join("、"),
+      コメント: fd.get("コメント") || "",
+      掲載同意: fd.get("掲載同意") || "",
+    };
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: data });
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
       const json = await res.json();
       if (json.success) {
         setStatus("ok");
@@ -113,13 +128,8 @@ export default function SubmitForm() {
         </div>
       </div>
 
-      <div>
-        <label className="block text-sm font-medium mb-1">写真（任意・1枚）</label>
-        <input name="photo" type="file" accept="image/*"
-          className="w-full text-sm" style={{ color: "var(--muted)" }} />
-        <p className="text-[11px] mt-1" style={{ color: "var(--muted)" }}>
-          サイズが大きく送れない場合は、まず下記の情報だけ送信いただければ、後ほど写真の送り方をご案内します。
-        </p>
+      <div className="rounded-lg border px-3 py-2.5 text-[12px]" style={{ borderColor: "var(--border)", background: "var(--surface2)", color: "var(--muted)" }}>
+        📷 写真本体は、送信後に折り返しのメールでやり取りさせていただきます（まずは上記の情報だけでOKです）。
       </div>
 
       <div>
