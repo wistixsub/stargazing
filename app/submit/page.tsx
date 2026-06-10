@@ -11,6 +11,21 @@ export const metadata: Metadata = {
 export default function Submit() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
+      {/* 世界観ビジュアル（フリー素材・出典=public/photos/CREDITS.md。作例ではない装飾用途） */}
+      <div
+        className="relative -mt-2 mb-8 h-40 sm:h-48 rounded-2xl overflow-hidden flex items-end"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(11,16,32,.25), rgba(11,16,32,.72)), url('/photos/milkyway-portrait.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center 30%",
+        }}
+        aria-hidden="true"
+      >
+        <p className="px-5 pb-4 text-sm font-medium" style={{ color: "var(--text)", textShadow: "0 1px 4px rgba(0,0,0,.6)" }}>
+          あなたの一枚が、次の誰かの機材選びを助けます。
+        </p>
+      </div>
       <h1 className="text-2xl sm:text-3xl font-bold">作例を投稿する</h1>
       <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
         あなたが撮った星空写真を、<span style={{ color: "var(--accent)" }}>使用機材のタグ</span>とともに
@@ -25,7 +40,7 @@ export default function Submit() {
           {[
             ["写真を選ぶ", "あなたが撮影した星空写真（星景・天体・月など）を1枚。"],
             ["撮影データを書く", "使用機材（ボディ・レンズ・赤道儀・三脚など）、撮影地、ISO/F/SSなど分かる範囲で。"],
-            ["送る", "下記のフォームから送信（準備中）。"],
+            ["送る", "下記のフォームから送信。"],
             ["掲載", "内容を確認のうえ、許諾を得た写真を掲載します。使用機材はタグ化され、機材ページにも表示されます。"],
           ].map(([t, b], i) => (
             <li key={i} className="flex gap-3">
