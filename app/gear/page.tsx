@@ -32,10 +32,17 @@ export default function GearIndex() {
 
       {byCategory.map(({ cat, items }) => (
         <section key={cat} className="mt-8">
-          <h2 className="text-xs uppercase tracking-widest mb-3" style={{ color: "var(--muted)" }}>
-            {cat}
-            <RoleBadge cat={cat} />
-          </h2>
+          <div className="flex items-center mb-3">
+            <h2 className="text-xs uppercase tracking-widest" style={{ color: "var(--muted)" }}>
+              {cat}
+              <RoleBadge cat={cat} />
+            </h2>
+            {cat === "レンズ" && (
+              <Link href="/gear/lenses" className="ml-auto text-xs font-bold hover:underline" style={{ color: "var(--accent)" }}>
+                ステップアップ診断で選ぶ →
+              </Link>
+            )}
+          </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {items.map((p) => (
               <Link
@@ -57,6 +64,9 @@ export default function GearIndex() {
                 <span className="block min-w-0">
                   <span className="flex items-center gap-2 mb-1">
                     <h3 className="font-bold leading-snug" style={{ color: "var(--navy)" }}>{p.name}</h3>
+                    {p.tier && (
+                      <span className="text-[10px] px-1.5 py-0.5 rounded shrink-0" style={{ background: "var(--surface2)", color: "var(--accent)" }}>{p.tier}</span>
+                    )}
                     {p.role === "副" && (
                       <span className="text-[10px] px-1.5 py-0.5 rounded shrink-0" style={{ background: "var(--surface2)", color: "var(--accent2)" }}>観る</span>
                     )}

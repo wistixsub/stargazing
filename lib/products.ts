@@ -18,6 +18,7 @@ export type Product = {
   name: string;
   category: ProductCategory;
   role: "主" | "副"; // 主＝星空撮影が目的のギア／副＝観望系
+  tier?: "入門" | "ステップアップ" | "本格"; // カテゴリ内のステップアップ位置（比較ハブで使用）
   icon: IconName; // 線画アイコン（components/icons.tsx・リンクカードやタグで使用）
   illustration?: string; // カード用イラスト（public/img/・トップと同じ円形カードで表示）
   image?: string; // 商品画像パス（未設定＝アイコンプレースホルダ）
@@ -86,6 +87,7 @@ export const PRODUCTS: Product[] = [
     name: "SAMYANG 14mm F2.8 ED AS IF UMC（MF超広角）",
     category: "レンズ",
     role: "主",
+    tier: "入門",
     icon: "lens",
     illustration: "/img/gear-lens.png",
     tagline: "フルサイズ対応14mm F2.8。星景の定番にして高コスパなマニュアル超広角。",
@@ -120,6 +122,91 @@ export const PRODUCTS: Product[] = [
     purchase: [{ label: "購入先（提携準備中）" }],
     affiliateKeyword: "SAMYANG 14mm F2.8",
     verified: true,
+  },
+  {
+    slug: "sigma-14-24mm-f28",
+    name: "SIGMA 14-24mm F2.8 DG DN | Art（AF超広角ズーム）",
+    category: "レンズ",
+    role: "主",
+    tier: "ステップアップ",
+    icon: "lens",
+    tagline: "F2.8通しの超広角ズーム・795g。AFと「画角を選べる自由」を手に入れるステップアップの定番。",
+    forWho: "MF単焦点で星景を覚え、構図の自由度・AF・最新の光学性能が欲しくなった人。",
+    pros: [
+      "14〜24mmのズームで、天の川アーチ（広く）も部分の切り取り（寄せ）も1本でこなせる",
+      "F2.8通しなので、どの焦点距離でも星空向けの明るさを維持できる",
+      "ミラーレス専用設計のArtライン。星のような点光源に強い光学性能をうたう設計",
+      "超広角F2.8ズームとして795gは軽量。遠征の負担が小さい",
+    ],
+    cons: [
+      "対応はソニーE・ライカLマウントのみ（キヤノンRF・ニコンZでは使えない）",
+      "前玉が出た形状（出目金）で、前面のねじ込みフィルターは使えない",
+      "単焦点F1.4クラスと比べれば明るさは2段譲る",
+    ],
+    specs: [
+      { label: "焦点距離 / 開放F値", value: "14-24mm / F2.8通し" },
+      { label: "対応マウント", value: "ソニーE / ライカL" },
+      { label: "重量", value: "795g" },
+      { label: "最短撮影距離", value: "28cm" },
+      { label: "絞り羽根", value: "11枚（円形絞り）" },
+    ],
+    usage: [
+      { heading: "1. 焦点距離で絵を選ぶ", body: "14mm側は天の川と地上を一緒に収める王道。24mm側は山稜や木立と星空を組み合わせる切り取りに。ズームなら現地で両方試せる。" },
+      { heading: "2. 開放F2.8から使う", body: "星空ではまず開放で。四隅の星像が気になる場合だけ1/3〜1/2段絞って様子を見る。" },
+      { heading: "3. SSは焦点距離ごとに再計算", body: "14mmと24mmでは星が流れない上限秒数が変わる。ズームした時は500ルール計算機で出し直す。" },
+    ],
+    relatedGuides: [
+      { href: "/gear/lenses", label: "星空レンズのステップアップ診断" },
+      { href: "/guide/lens", label: "星空向けレンズの選び方" },
+      { href: "/tools/500-rule", label: "500ルール計算機" },
+    ],
+    purchase: [{ label: "購入先（提携準備中）" }],
+    affiliateKeyword: "SIGMA 14-24mm F2.8 DG DN",
+    verified: true,
+    sourceUrl: "https://www.sigma-global.com/jp/lenses/a019_14_24_28/",
+  },
+  {
+    slug: "sigma-14mm-f14",
+    name: "SIGMA 14mm F1.4 DG DN | Art（星景のためのF1.4）",
+    category: "レンズ",
+    role: "主",
+    tier: "本格",
+    icon: "lens",
+    tagline: "交換レンズで唯一の14mm F1.4（メーカー発表・2023年発売）。星景撮影のために作り込まれたフラッグシップ。",
+    forWho: "星景を本気の柱にする人。「ISOを下げる」「露光を短くする」の2段分に投資できる人。",
+    pros: [
+      "F1.4の集光力はF2.8の2段分。同じ露出ならISOを1/4にでき、ノイズが目に見えて減る",
+      "フォーカスリングロック（MFLスイッチ）搭載。夜間の不意のピントずれを物理的に防げる",
+      "レンズヒーターリテイナー搭載。結露対策（ヒーター巻き）を前提に設計されている",
+      "防塵防滴構造＋撥水撥油コートで夜露の多い現場に強い",
+    ],
+    cons: [
+      "約1.2kgと重い。三脚・雲台にも相応の剛性が必要になる",
+      "対応はソニーE・ライカLマウントのみ",
+      "前玉が出た形状（出目金）で、前面のねじ込みフィルターは使えない",
+      "価格は超広角単焦点として最上級クラス（実勢20万円台・要確認）",
+    ],
+    specs: [
+      { label: "焦点距離 / 開放F値", value: "14mm / F1.4" },
+      { label: "対応マウント", value: "ソニーE / ライカL" },
+      { label: "重量", value: "1,160g（E）/ 1,170g（L）" },
+      { label: "星景支援機能", value: "MFLスイッチ・AFLボタン・レンズヒーターリテイナー" },
+      { label: "防塵防滴", value: "対応（前面に撥水撥油コート）" },
+    ],
+    usage: [
+      { heading: "1. ピントを合わせてMFLでロック", body: "ライブビューで星にピントを追い込んだら、MFLスイッチでフォーカスリングをロック。移動や長時間運用でもピントがずれない。" },
+      { heading: "2. F1.4は「ISOを下げる」ために使う", body: "F2.8・ISO6400相当の露出が、F1.4ならISO1600で撮れる。明るさでなくノイズの少なさに変換するのがこのレンズの使い方。" },
+      { heading: "3. ヒーターを標準装備に", body: "リテイナーがあるのでレンズヒーターを定位置に巻ける。結露で後半のコマを失わない運用が組める。" },
+    ],
+    relatedGuides: [
+      { href: "/gear/lenses", label: "星空レンズのステップアップ診断" },
+      { href: "/guide/lens", label: "星空向けレンズの選び方" },
+      { href: "/guide/settings", label: "星空撮影の設定 完全ガイド" },
+    ],
+    purchase: [{ label: "購入先（提携準備中）" }],
+    affiliateKeyword: "SIGMA 14mm F1.4 DG DN",
+    verified: true,
+    sourceUrl: "https://www.sigma-global.com/jp/lenses/a023_14_14/",
   },
   {
     slug: "sturdy-tripod",

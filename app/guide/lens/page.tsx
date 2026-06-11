@@ -17,6 +17,7 @@ export default function Page() {
       lead="星空レンズは「焦点距離（どこまで広く写すか）」と「F値（どれだけ明るいか）」の2軸で選びます。星景・天の川に向く組み合わせを整理します。"
       datePublished="2026-06-06"
       related={[
+        { href: "/gear/lenses", label: "具体的に選ぶ：星空レンズのステップアップ診断（比較表つき）" },
         { href: "/guide/samyang-14mm", label: "実例：SAMYANG 14mm F2.8で星空を撮る設定" },
         { href: "/guide/settings", label: "星空撮影の設定 完全ガイド" },
         { href: "/tools/500-rule", label: "500ルール計算機（画角で最大SSが変わる）" },

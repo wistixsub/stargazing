@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const paths: { p: string; cf: "weekly" | "monthly"; pr: number }[] = [
     { p: "/", cf: "weekly", pr: 1 },
     { p: "/gear", cf: "weekly", pr: 0.9 },
+    { p: "/gear/lenses", cf: "monthly", pr: 0.8 },
     { p: "/gallery", cf: "weekly", pr: 0.8 },
     { p: "/submit", cf: "monthly", pr: 0.5 },
     ...PRODUCTS.map((pr) => ({ p: `/gear/${pr.slug}`, cf: "monthly" as const, pr: 0.8 })),
