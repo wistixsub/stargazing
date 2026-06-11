@@ -98,6 +98,7 @@
 - 月齢計算は `lib/moon.ts` へ共通化（MoonCalcと共用）。**作例＝実投稿のみ原則は維持**（モックのダミー作例は実装せず、空状態＝第1号募集のまま）。
 - ヒーロー写真＝Unsplash Taneli Lahtinen（1600px/q80・CREDITS.md記載）。ロゴ・アイコン・ギアイラストは `public/img/`。
 - build 38ルート通過・デスクトップ/モバイルのスクショで検証・push済（179d6e3）→Vercel自動デプロイ。DawnSky/StarFieldは未使用化（残置）。
+- **追補（同日・本人指摘「絵文字アイコンがチープ」）**：OS絵文字を全廃。`components/icons.tsx`（線画SVGセット15種・トップのデザイン素材と同じ視覚言語・currentColor）を新設し、`Product.emoji`→`icon`(+`illustration`)に変更。/gear＝トップと同じ円形イラストカード化（イラスト無し3品は同じ円に線画）、/guide一覧・作例の機材タグ・投稿フォーム・商品詳細ヘッダも線画化。ヘッダーのナビ表示閾値をxl(1280px)に変更（中間幅の折返し解消）。記事本文内の絵文字（季節見出し等）は対象外。
 
 ## 次の一手
 - [ ] GA4の `NEXT_PUBLIC_GA_ID` 設定（本番）＋ Search Console 登録（順位を"観る"＝学習の核）

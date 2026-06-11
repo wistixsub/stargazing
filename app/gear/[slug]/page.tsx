@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PRODUCTS, getProduct } from "@/lib/products";
+import { LineIcon } from "@/components/icons";
 import { getSamplesByGear } from "@/lib/samples";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { NETWORKS, affiliateClickUrl, impressionUrl } from "@/lib/affiliate";
@@ -60,7 +62,16 @@ export default async function GearDetail({ params }: { params: Promise<{ slug: s
       </nav>
 
       <div className="mt-3 flex items-center gap-3">
-        <span className="text-3xl">{p.emoji}</span>
+        <span
+          className="w-12 h-12 shrink-0 rounded-full flex items-center justify-center overflow-hidden"
+          style={{ background: "radial-gradient(circle at 50% 45%,#eaf3f3 0%,#e3eef2 55%,#dde9f0 100%)" }}
+        >
+          {p.illustration ? (
+            <Image src={p.illustration} alt="" width={42} height={42} className="w-[42px] h-[42px] object-contain" />
+          ) : (
+            <LineIcon name={p.icon} size={26} style={{ color: "var(--navy)" }} />
+          )}
+        </span>
         <h1 className="text-2xl sm:text-3xl font-bold leading-tight">{p.name}</h1>
       </div>
       <p className="mt-3 leading-relaxed" style={{ color: "var(--muted)" }}>{p.tagline}</p>

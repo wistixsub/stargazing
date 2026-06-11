@@ -87,7 +87,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Image src={logoConstellation} alt="" className="h-[42px] w-auto opacity-95" priority />
               <Image src={logoWordmark} alt="星空ノート Hoshizora Note" className="h-10 w-auto" priority />
             </Link>
-            <nav className="hidden lg:flex items-center gap-[30px] ml-1">
+            <nav className="hidden xl:flex items-center gap-[30px] ml-1">
               {NAV_MAIN.map((n) => (
                 <Link
                   key={n.href}
@@ -96,10 +96,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 >
                   <Image src={n.icon} alt="" className="w-[26px] h-[26px] object-contain shrink-0" />
                   <span>
-                    <b className="block font-bold text-base leading-tight tracking-wide" style={{ color: "var(--navy)" }}>
+                    <b className="block font-bold text-base leading-tight tracking-wide whitespace-nowrap" style={{ color: "var(--navy)" }}>
                       {n.label}
                     </b>
-                    <span className="block text-[11.5px] leading-tight tracking-wide" style={{ color: "var(--muted2)" }}>
+                    <span className="block text-[11.5px] leading-tight tracking-wide whitespace-nowrap" style={{ color: "var(--muted2)" }}>
                       {n.sub}
                     </span>
                   </span>

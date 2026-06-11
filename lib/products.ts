@@ -2,6 +2,8 @@
 // ※data規律：スペック・価格は捏造しない。verified=true は公式/一次情報で裏取り済み（sourceUrl明記）。
 //   verified=false はカテゴリ選び方ガイド（特定モデルを断定しない・代表値）。UI上で「仕様は要確認」を明示する。
 
+import type { IconName } from "@/components/icons";
+
 export type ProductCategory = "赤道儀" | "レンズ" | "三脚" | "カメラ" | "アクセサリ" | "観望";
 
 /** 購入先リンク（url未設定＝アフィリ提携前／募集中。虚偽の在庫・価格表示はしない）。 */
@@ -16,8 +18,9 @@ export type Product = {
   name: string;
   category: ProductCategory;
   role: "主" | "副"; // 主＝星空撮影が目的のギア／副＝観望系
-  emoji: string;
-  image?: string; // 商品画像パス（未設定＝絵文字プレースホルダ）
+  icon: IconName; // 線画アイコン（components/icons.tsx・リンクカードやタグで使用）
+  illustration?: string; // カード用イラスト（public/img/・トップと同じ円形カードで表示）
+  image?: string; // 商品画像パス（未設定＝アイコンプレースホルダ）
   tagline: string; // 一言サマリー
   forWho: string; // こんな人向け
   // ── 買う前情報 ──
@@ -43,7 +46,8 @@ export const PRODUCTS: Product[] = [
     name: "ケンコー スカイメモS（ポータブル赤道儀）",
     category: "赤道儀",
     role: "主",
-    emoji: "🧭",
+    icon: "mount",
+    illustration: "/img/gear-eq.png",
     tagline: "搭載5kg・極軸望遠鏡標準装備。星景〜天の川を点像で長秒露光できる定番機。",
     forWho: "三脚＋カメラで星を撮り始め、もっとクリアに・暗部まで撮りたくなった人。",
     pros: [
@@ -82,7 +86,8 @@ export const PRODUCTS: Product[] = [
     name: "SAMYANG 14mm F2.8 ED AS IF UMC（MF超広角）",
     category: "レンズ",
     role: "主",
-    emoji: "🔭",
+    icon: "lens",
+    illustration: "/img/gear-lens.png",
     tagline: "フルサイズ対応14mm F2.8。星景の定番にして高コスパなマニュアル超広角。",
     forWho: "キットレンズで星を撮ってみて、もっと広く・明るく撮りたいと感じた人。",
     pros: [
@@ -121,7 +126,8 @@ export const PRODUCTS: Product[] = [
     name: "スリック ライトカーボン E83 II（剛性重視の星空三脚）",
     category: "三脚",
     role: "主",
-    emoji: "📐",
+    icon: "tripod",
+    illustration: "/img/gear-tripod.png",
     tagline: "28mmカーボン3段・推奨積載5kg。長秒露光のブレを止める、星空写真の歩留まりを決める土台。",
     forWho: "暗所での数十秒露光で写真がブレる・甘くなる悩みを解決したい人。赤道儀の搭載も見据える人。",
     pros: [
@@ -162,7 +168,8 @@ export const PRODUCTS: Product[] = [
     name: "ビクセン 天体観測用ライト SG-L02",
     category: "アクセサリ",
     role: "主",
-    emoji: "🔦",
+    icon: "flashlight",
+    illustration: "/img/gear-light.png",
     tagline: "暗順応を壊さず手元を照らす、天体観測のための専用設計ライト。29gの必需品。",
     forWho: "暗闇での機材操作・ノート書き・足元確認を、目を眩ませずに行いたい人。",
     pros: [
@@ -203,7 +210,7 @@ export const PRODUCTS: Product[] = [
     name: "インターバルタイマー付きリモートレリーズの選び方",
     category: "アクセサリ",
     role: "主",
-    emoji: "⏱️",
+    icon: "timer",
     tagline: "シャッターブレを防ぎ、タイムラプス・比較明合成を自動化する小さな相棒。",
     forWho: "長秒露光のブレを無くしたい人、星の軌跡（比較明合成）やタイムラプスに挑戦したい人。",
     pros: [
@@ -240,7 +247,7 @@ export const PRODUCTS: Product[] = [
     name: "ケンコー PRO1D プロソフトン クリア(W)",
     category: "アクセサリ",
     role: "主",
-    emoji: "✨",
+    icon: "filter",
     tagline: "風景はクリアなまま星座を際立たせる、星景の新定番ソフトフィルター。",
     forWho: "星景写真で「どれが何座か分かる」絵にしたい人、星を印象的に見せたい人。",
     pros: [
@@ -278,7 +285,7 @@ export const PRODUCTS: Product[] = [
     name: "ビクセン アスコット ZR10×50WP(W)（観望双眼鏡）",
     category: "観望",
     role: "副",
-    emoji: "🔭",
+    icon: "binoculars",
     tagline: "撮ったら次は「観る」。10×50・実視界6.5°で星雲星団を楽しめる防水機。",
     forWho: "撮影で星空に親しみ、肉眼の次のステップとして眼視も楽しみたい人。",
     pros: [

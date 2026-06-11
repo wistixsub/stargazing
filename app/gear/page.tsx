@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { PRODUCTS, CATEGORY_ORDER, type ProductCategory } from "@/lib/products";
+import { LineIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "星空撮影ギア｜目的から選ぶ機材ガイド",
@@ -39,19 +41,30 @@ export default function GearIndex() {
               <Link
                 key={p.slug}
                 href={`/gear/${p.slug}`}
-                className="rounded-xl border p-5 block transition hover:-translate-y-0.5"
-                style={{ borderColor: "var(--border)", background: "var(--surface)" }}
+                className="group flex items-start gap-4 rounded-[18px] p-5 transition hover:-translate-y-1"
+                style={{ background: "var(--surface)", border: "1px solid var(--card-border)", boxShadow: "0 8px 22px rgba(40,70,120,.06)" }}
               >
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl">{p.emoji}</span>
-                  {p.role === "副" && (
-                    <span className="text-[10px] px-1.5 py-0.5 rounded" style={{ background: "var(--surface2)", color: "var(--accent2)" }}>観る</span>
+                <span
+                  className="w-[72px] h-[72px] shrink-0 rounded-full flex items-center justify-center overflow-hidden"
+                  style={{ background: "radial-gradient(circle at 50% 45%,#eaf3f3 0%,#e3eef2 55%,#dde9f0 100%)" }}
+                >
+                  {p.illustration ? (
+                    <Image src={p.illustration} alt="" width={64} height={64} className="w-16 h-16 object-contain" />
+                  ) : (
+                    <LineIcon name={p.icon} size={34} style={{ color: "var(--navy)" }} />
                   )}
-                </div>
-                <h3 className="font-bold mb-1 leading-snug">{p.name}</h3>
-                <p className="text-sm" style={{ color: "var(--muted)" }}>{p.tagline}</p>
-                <span className="mt-3 inline-block text-xs" style={{ color: "var(--accent)" }}>
-                  詳しく見る →
+                </span>
+                <span className="block min-w-0">
+                  <span className="flex items-center gap-2 mb-1">
+                    <h3 className="font-bold leading-snug" style={{ color: "var(--navy)" }}>{p.name}</h3>
+                    {p.role === "副" && (
+                      <span className="text-[10px] px-1.5 py-0.5 rounded shrink-0" style={{ background: "var(--surface2)", color: "var(--accent2)" }}>観る</span>
+                    )}
+                  </span>
+                  <span className="block text-sm" style={{ color: "var(--muted)" }}>{p.tagline}</span>
+                  <span className="mt-2.5 inline-flex items-center gap-1.5 text-xs font-bold" style={{ color: "var(--accent)" }}>
+                    詳しく見る <span className="transition group-hover:translate-x-1">→</span>
+                  </span>
                 </span>
               </Link>
             ))}

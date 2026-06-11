@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { PRODUCTS } from "@/lib/products";
 import { WEB3FORMS_KEY } from "@/lib/site";
+import { LineIcon } from "@/components/icons";
 
 type Status = "idle" | "sending" | "ok" | "error";
 
@@ -122,7 +123,8 @@ export default function SubmitForm() {
           {PRODUCTS.map((p) => (
             <label key={p.slug} className="flex items-center gap-2 text-sm">
               <input type="checkbox" name="使用機材" value={p.name} />
-              <span>{p.emoji} {p.name}</span>
+              <LineIcon name={p.icon} size={16} className="shrink-0" style={{ color: "var(--navy)" }} />
+              <span>{p.name}</span>
             </label>
           ))}
         </div>

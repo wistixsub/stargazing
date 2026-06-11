@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { approvedSamples, gearOf } from "@/lib/samples";
+import { LineIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "みんなの星空作例｜使用機材から探す",
@@ -67,9 +68,10 @@ export default function Gallery() {
                     <div className="flex flex-wrap gap-1.5">
                       {gear.map((g) => (
                         <Link key={g.slug} href={`/gear/${g.slug}`}
-                          className="text-[11px] px-2 py-1 rounded-full transition hover:opacity-80"
+                          className="inline-flex items-center gap-1 text-[11px] px-2 py-1 rounded-full transition hover:opacity-80"
                           style={{ background: "var(--surface2)", color: "var(--accent)" }}>
-                          {g.emoji} {g.name.replace(/（.*?）/g, "").trim()}
+                          <LineIcon name={g.icon} size={13} className="shrink-0" />
+                          {g.name.replace(/（.*?）/g, "").trim()}
                         </Link>
                       ))}
                     </div>
