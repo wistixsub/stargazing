@@ -44,7 +44,7 @@ export default function AboutPage() {
           <Link
             href="/submit"
             className="mt-3 inline-block rounded-lg px-5 py-2.5 font-bold text-sm"
-            style={{ background: "var(--accent)", color: "#06121a" }}
+            style={{ background: "var(--accent)", color: "#ffffff" }}
           >
             フォームから問い合わせる
           </Link>

@@ -81,7 +81,7 @@ export default async function GearDetail({ params }: { params: Promise<{ slug: s
                   target="_blank"
                   rel="nofollow sponsored noopener"
                   className="rounded-lg px-4 py-2 text-sm font-bold"
-                  style={{ background: "var(--accent)", color: "#06121a" }}
+                  style={{ background: "var(--accent)", color: "#ffffff" }}
                 >
                   {n.label} →
                 </a>
@@ -98,7 +98,7 @@ export default async function GearDetail({ params }: { params: Promise<{ slug: s
             p.purchase.map((b) =>
               b.url ? (
                 <a key={b.label} href={b.url} target="_blank" rel="nofollow sponsored noopener"
-                  className="rounded-lg px-4 py-2 text-sm font-bold" style={{ background: "var(--accent)", color: "#06121a" }}>
+                  className="rounded-lg px-4 py-2 text-sm font-bold" style={{ background: "var(--accent)", color: "#ffffff" }}>
                   {b.label} →
                 </a>
               ) : (

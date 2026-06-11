@@ -19,7 +19,7 @@ export default function Gallery() {
       </p>
       <p className="mt-4">
         <Link href="/submit" className="inline-block rounded-lg px-5 py-2.5 text-sm font-bold"
-          style={{ background: "var(--accent)", color: "#06121a" }}>
+          style={{ background: "var(--accent)", color: "#ffffff" }}>
           作例を投稿する →
         </Link>
       </p>
@@ -36,7 +36,7 @@ export default function Gallery() {
           </p>
           <p className="mt-6">
             <Link href="/submit" className="inline-block rounded-lg px-6 py-3 text-sm font-bold"
-              style={{ background: "var(--accent)", color: "#06121a" }}>
+              style={{ background: "var(--accent)", color: "#ffffff" }}>
               第1号として作例を投稿する →
             </Link>
           </p>

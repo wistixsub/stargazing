@@ -45,7 +45,7 @@ export default function Submit() {
           ].map(([t, b], i) => (
             <li key={i} className="flex gap-3">
               <span className="flex-none w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
-                style={{ background: "var(--accent)", color: "#06121a" }}>{i + 1}</span>
+                style={{ background: "var(--accent)", color: "#ffffff" }}>{i + 1}</span>
               <span><b style={{ color: "var(--text)" }}>{t}</b>：{b}</span>
             </li>
           ))}

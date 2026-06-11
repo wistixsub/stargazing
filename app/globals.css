@@ -1,33 +1,39 @@
 @import "tailwindcss";
 
-/* 星空テーマ（夜空ネイビー × シアン発光 × 温かいオレンジ差し色・可読性重視） */
+/* 星空ノート ライトテーマ（Claude Designモック 2026-06-10 準拠：白基調×ネイビーインク×ブルー） */
 :root {
-  --bg: #0b1020;
-  --surface: #141b2e;
-  --surface2: #1d2740;
-  --text: #eaf0ff;
-  --muted: #9aa6c2;
-  --accent: #6fd3e0;   /* シアン発光 */
-  --accent2: #f0b357;  /* 温かいオレンジ */
-  --border: #2a3550;
+  --bg: #fbfcfe;
+  --surface: #ffffff;
+  --surface2: #eef3f9;
+  --text: #1b2f4d;
+  --ink-soft: #3a4a63;
+  --navy: #21385a;
+  --muted: #74808f;
+  --muted2: #8d97a4;
+  --accent: #2c74bf;     /* ブルー */
+  --accent-deep: #235ea0;
+  --accent2: #b97a1c;    /* 温かいオレンジ（白背景で読める濃度） */
+  --border: #e6ecf3;
+  --card-border: #eaf0f6;
 }
 
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--text);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-noto-sans);
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-noto-sans), system-ui, sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
 
 a { color: inherit; }
 
-/* ── スターフィールド（CSS・外部画像なしの"当面しのぎ"ビジュアル） ── */
+/* ── スターフィールド（StarField コンポーネント用・現在は未使用） ── */
 @keyframes twinkle {
   0%, 100% { opacity: 0.25; }
   50%      { opacity: 1; }

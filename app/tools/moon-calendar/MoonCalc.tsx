@@ -1,15 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-
-const SYNODIC = 29.530588853; // 朔望月（日）
-const REF = Date.UTC(2000, 0, 6, 18, 14, 0); // 既知の新月（2000-01-06 18:14 UTC）
-
-function moonAge(ms: number): number {
-  let age = ((ms - REF) / 86400000) % SYNODIC;
-  if (age < 0) age += SYNODIC;
-  return age;
-}
+import { SYNODIC, moonAge, illumination } from "@/lib/moon";
 
 const PHASES = [
   "新月", "三日月（上弦前）", "上弦の月", "十三夜（満月前）",
@@ -22,10 +14,6 @@ function phaseLabel(age: number): string {
   if (Math.abs(age - SYNODIC / 2) < 1.0) return "満月";
   const idx = Math.floor((age / SYNODIC) * 8 + 0.5) % 8;
   return PHASES[idx];
-}
-
-function illumination(age: number): number {
-  return (1 - Math.cos((2 * Math.PI * age) / SYNODIC)) / 2;
 }
 
 function fmtDate(ms: number): string {

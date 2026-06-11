@@ -151,7 +151,7 @@ export default function SubmitForm() {
 
       <button type="submit" disabled={status === "sending"}
         className="rounded-lg px-5 py-2.5 text-sm font-bold disabled:opacity-60"
-        style={{ background: "var(--accent)", color: "#06121a" }}>
+        style={{ background: "var(--accent)", color: "#ffffff" }}>
         {status === "sending" ? "送信中…" : "作例を投稿する"}
       </button>
     </form>
