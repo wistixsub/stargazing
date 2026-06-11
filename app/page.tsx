@@ -3,6 +3,7 @@ import Image from "next/image";
 import { approvedSamples } from "@/lib/samples";
 import Calc500Mini from "@/components/Calc500Mini";
 import MoonWeekStrip from "@/components/MoonWeekStrip";
+import { LineIcon } from "@/components/icons";
 import gearEq from "@/public/img/gear-eq.png";
 import gearLens from "@/public/img/gear-lens.png";
 import gearTripod from "@/public/img/gear-tripod.png";
@@ -286,6 +287,32 @@ export default function Home() {
             </Link>
             <MoonWeekStrip />
           </div>
+
+          <Link
+            href="/glossary"
+            className="group block rounded-[18px] px-6 sm:px-[26px] py-6 mt-[22px] transition hover:-translate-y-0.5"
+            style={{ background: "var(--surface)", border: "1px solid var(--card-border)", boxShadow: cardShadow }}
+          >
+            <span className="flex items-start gap-3.5">
+              <span
+                className="w-[42px] h-[42px] shrink-0 rounded-full flex items-center justify-center"
+                style={{ background: "radial-gradient(circle at 50% 45%,#eaf3f3 0%,#e3eef2 55%,#dde9f0 100%)" }}
+              >
+                <LineIcon name="glossary" size={24} style={{ color: "var(--navy)" }} />
+              </span>
+              <span>
+                <span className="block text-lg font-extrabold mb-1 transition group-hover:text-[var(--accent)]" style={{ color: "var(--navy)" }}>
+                  星空撮影の用語集
+                </span>
+                <span className="block text-[12.5px] leading-snug" style={{ color: "var(--muted)" }}>
+                  赤道儀・500ルール・暗順応…。ことばの意味だけでなく、機材選びと写真のどこに効くかから引けます。
+                </span>
+                <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold" style={{ color: "var(--accent)" }}>
+                  用語集を見る <span className="transition group-hover:translate-x-1">→</span>
+                </span>
+              </span>
+            </span>
+          </Link>
         </aside>
       </div>
     </div>

@@ -19,7 +19,8 @@ export type IconName =
   | "moon"         // 月
   | "planet"       // 惑星（土星）
   | "constellation"// 星座
-  | "milkyway";    // 天の川
+  | "milkyway"     // 天の川
+  | "glossary";    // 用語集（しおり付きの本）
 
 const PATHS: Record<IconName, ReactNode> = {
   mount: (
@@ -132,6 +133,13 @@ const PATHS: Record<IconName, ReactNode> = {
       <path d="M12 4 l.7 1.7 1.7 .7 -1.7 .7 -.7 1.7 -.7 -1.7 -1.7 -.7 1.7 -.7 Z" fill="currentColor" stroke="none" />
       <circle cx="6" cy="10.6" r="1" fill="currentColor" stroke="none" />
       <circle cx="18" cy="10.6" r="1" fill="currentColor" stroke="none" />
+    </>
+  ),
+  glossary: (
+    <>
+      <path d="M6.5 2.5 H19.5 v19 H6.5 A2.5 2.5 0 0 1 4 19 v-14 A2.5 2.5 0 0 1 6.5 2.5 Z" />
+      <path d="M4 19 a2.5 2.5 0 0 1 2.5 -2.5 H19.5" />
+      <path d="M10 2.5 v7.5 l2.5 -1.8 2.5 1.8 V2.5" />
     </>
   ),
 };

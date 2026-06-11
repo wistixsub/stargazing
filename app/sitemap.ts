@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...PRODUCTS.map((pr) => ({ p: `/gear/${pr.slug}`, cf: "monthly" as const, pr: 0.8 })),
     { p: "/tools/500-rule", cf: "monthly", pr: 0.9 },
     { p: "/tools/moon-calendar", cf: "monthly", pr: 0.9 },
+    { p: "/glossary", cf: "monthly", pr: 0.7 },
     { p: "/guide", cf: "weekly", pr: 0.7 },
     { p: "/about", cf: "monthly", pr: 0.4 },
     { p: "/privacy", cf: "monthly", pr: 0.3 },

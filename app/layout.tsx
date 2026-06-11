@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import "./globals.css";
 import { SITE_URL, SITE_NAME, GA_ID } from "@/lib/site";
+import { LineIcon, type IconName } from "@/components/icons";
 import logoConstellation from "@/public/img/logo-constellation.png";
 import logoWordmark from "@/public/img/logo-wordmark.png";
 import icGear from "@/public/img/ic-gear.png";
@@ -51,11 +52,12 @@ export const metadata: Metadata = {
   },
 };
 
-const NAV_MAIN = [
-  { href: "/gear", icon: icGear, label: "ギア", sub: "機材カタログ" },
-  { href: "/gallery", icon: icGallery, label: "作例", sub: "ギャラリー" },
-  { href: "/guide", icon: icGuide, label: "ガイド", sub: "撮影ガイド" },
-  { href: "/tools/500-rule", icon: icTools, label: "ツール", sub: "便利ツール" },
+const NAV_MAIN: { href: string; img?: typeof icGear; lineIcon?: IconName; label: string; sub: string }[] = [
+  { href: "/gear", img: icGear, label: "ギア", sub: "機材カタログ" },
+  { href: "/gallery", img: icGallery, label: "作例", sub: "ギャラリー" },
+  { href: "/guide", img: icGuide, label: "ガイド", sub: "撮影ガイド" },
+  { href: "/tools/500-rule", img: icTools, label: "ツール", sub: "便利ツール" },
+  { href: "/glossary", lineIcon: "glossary", label: "用語集", sub: "ことば辞典" },
 ];
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -94,7 +96,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   href={n.href}
                   className="flex items-center gap-[11px] py-1.5 px-1 transition hover:-translate-y-px"
                 >
-                  <Image src={n.icon} alt="" className="w-[26px] h-[26px] object-contain shrink-0" />
+                  {n.img ? (
+                    <Image src={n.img} alt="" className="w-[26px] h-[26px] object-contain shrink-0" />
+                  ) : (
+                    <LineIcon name={n.lineIcon!} size={26} className="shrink-0" style={{ color: "var(--navy)" }} />
+                  )}
                   <span>
                     <b className="block font-bold text-base leading-tight tracking-wide whitespace-nowrap" style={{ color: "var(--navy)" }}>
                       {n.label}
@@ -113,7 +119,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 style={{ color: "var(--ink-soft)" }}
               >
                 <Image src={icBeginner} alt="" className="w-[22px] h-[22px] object-contain" />
-                <span className="hidden sm:inline">はじめての方へ</span>
+                <span className="hidden sm:inline xl:hidden min-[1480px]:inline">はじめての方へ</span>
               </Link>
               <Link
                 href="/about"
@@ -121,7 +127,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 style={{ color: "var(--ink-soft)" }}
               >
                 <Image src={icAbout} alt="" className="w-[22px] h-[22px] object-contain" />
-                <span className="hidden sm:inline">このサイトについて</span>
+                <span className="hidden sm:inline xl:hidden min-[1480px]:inline">このサイトについて</span>
               </Link>
               <Link
                 href="/guide"
@@ -148,6 +154,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Link href="/gallery" className="hover:opacity-80">作例</Link>
               <Link href="/guide" className="hover:opacity-80">ガイド</Link>
               <Link href="/tools/500-rule" className="hover:opacity-80">ツール</Link>
+              <Link href="/glossary" className="hover:opacity-80">用語集</Link>
               <Link href="/about" className="hover:opacity-80">このサイトについて</Link>
               <Link href="/privacy" className="hover:opacity-80">プライバシーポリシー</Link>
             </nav>
