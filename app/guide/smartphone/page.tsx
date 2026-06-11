@@ -17,6 +17,8 @@ export default function Page() {
       lead="最近のスマホは夜景・星空モードが優秀で、星空も十分撮れます。最重要は「固定」。三脚さえあれば、今夜から始められます。"
       datePublished="2026-06-06"
       related={[
+        { href: "/guide/beginner", label: "カメラで本格的に：星空撮影の始め方【初心者完全ガイド】" },
+        { href: "/guide/camp-stargazing", label: "キャンプで星空を撮る方法（スマホ＋数千円から）" },
         { href: "/guide/settings", label: "星空撮影の設定 完全ガイド（次のステップ）" },
         { href: "/guide/milkyway-season", label: "天の川が見える時期と方角" },
         { href: "/tools/500-rule", label: "500ルール計算機" },

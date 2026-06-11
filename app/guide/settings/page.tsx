@@ -17,6 +17,7 @@ export default function Page() {
       lead="星空撮影は「絞り→シャッタースピード→ISO」の順で決めると迷いません。各設定の意味と目安、点で写すコツを順番に解説します。"
       datePublished="2026-06-06"
       related={[
+        { href: "/guide/beginner", label: "全体の流れから知りたい人へ：星空撮影の始め方【初心者完全ガイド】" },
         { href: "/tools/500-rule", label: "500ルール計算機で最大SSを計算する" },
         { href: "/guide/milkyway-season", label: "天の川が見える時期と方角" },
         { href: "/guide/smartphone", label: "スマホで星空を撮る方法" },

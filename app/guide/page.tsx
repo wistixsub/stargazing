@@ -8,9 +8,11 @@ export const metadata: Metadata = {
 };
 
 const GUIDES: { e: IconName; t: string; g: string; href?: string }[] = [
+  { e: "camera", t: "星空撮影の始め方【初心者完全ガイド】", g: "撮る", href: "/guide/beginner" },
   { e: "sliders", t: "星空撮影の設定 完全ガイド（ISO・絞り・SS）", g: "撮る", href: "/guide/settings" },
   { e: "milkyway", t: "天の川が見える時期と方角", g: "撮る", href: "/guide/milkyway-season" },
   { e: "smartphone", t: "スマホで星空を撮る方法", g: "撮る", href: "/guide/smartphone" },
+  { e: "smartphone", t: "キャンプで星空を撮る方法（スマホ＋数千円から）", g: "撮る", href: "/guide/camp-stargazing" },
   { e: "lens", t: "星空向けレンズの選び方（焦点距離×明るさ）", g: "撮る", href: "/guide/lens" },
   { e: "mount", t: "ポータブル赤道儀は必要か", g: "撮る", href: "/guide/star-tracker" },
   { e: "mount", t: "スカイメモSの使い方・設定ガイド", g: "撮る", href: "/guide/skymemo-s" },

@@ -26,7 +26,7 @@ const GEAR_CARDS = [
 ];
 
 const INTRO_ITEMS = [
-  { icon: icStart, title: "星空撮影の始め方", desc: "基礎知識をわかりやすく", href: "/guide" },
+  { icon: icStart, title: "星空撮影の始め方", desc: "持ち物・場所・設定を1ページで", href: "/guide/beginner" },
   { icon: icGear, title: "機材の選び方", desc: "予算別のおすすめ構成", href: "/gear" },
   { icon: icTechnique, title: "撮影テクニック", desc: "設定・ピント・構図の基本", href: "/guide/settings" },
 ];
