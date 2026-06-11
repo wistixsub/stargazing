@@ -305,7 +305,7 @@ export default function Home() {
                   星空撮影の用語集
                 </span>
                 <span className="block text-[12.5px] leading-snug" style={{ color: "var(--muted)" }}>
-                  赤道儀・500ルール・暗順応…。ことばの意味だけでなく、機材選びと写真のどこに効くかから引けます。
+                  赤道儀・500ルール・暗順応…。星空撮影でよく出てくることばを、関連する機材・ガイドとあわせて確認できます。
                 </span>
                 <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold" style={{ color: "var(--accent)" }}>
                   用語集を見る <span className="transition group-hover:translate-x-1">→</span>

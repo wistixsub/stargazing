@@ -8,7 +8,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "星空撮影の用語集｜ことばから機材と撮り方がわかる",
   description:
-    "赤道儀・500ルール・コマ収差・暗順応など、星空撮影と天体観望のことばを「写真と機材のどこに効くか」から解説。関連する機材・ガイド・ツールにそのまま辿れます。",
+    "赤道儀・500ルール・コマ収差・暗順応など、星空撮影と天体観望でよく出てくる用語をやさしく解説。関連する機材・ガイド・ツールにもそのまま辿れます。",
 };
 
 const CATEGORY_IDS: Record<string, string> = {
@@ -41,8 +41,8 @@ export default function Glossary() {
         <h1 className="text-2xl sm:text-3xl font-bold">星空撮影の用語集</h1>
       </div>
       <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-        ことばの「定義」ではなく、<span style={{ color: "var(--accent)" }}>写真と機材のどこに効くか</span>から引ける用語集です。
-        気になった用語から、関連する機材・ガイド・ツールにそのまま辿れます。
+        星空撮影や天体観望でよく出てくることばをまとめました。
+        各用語からは、関連する機材・ガイド・ツールにもそのまま辿れます。
       </p>
 
       {/* カテゴリジャンプ */}
