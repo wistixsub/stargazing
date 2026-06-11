@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { p: "/glossary", cf: "monthly", pr: 0.7 },
     { p: "/guide", cf: "weekly", pr: 0.7 },
     { p: "/about", cf: "monthly", pr: 0.4 },
+    { p: "/contact", cf: "monthly", pr: 0.3 },
     { p: "/privacy", cf: "monthly", pr: 0.3 },
     { p: "/guide/beginner", cf: "weekly", pr: 0.9 },
     { p: "/guide/camp-stargazing", cf: "monthly", pr: 0.8 },

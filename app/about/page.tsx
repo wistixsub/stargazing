@@ -42,13 +42,12 @@ export default function AboutPage() {
             掲載は記事の中立性を損なわない範囲で行います。
           </p>
           <Link
-            href="/submit"
+            href="/contact"
             className="mt-3 inline-block rounded-lg px-5 py-2.5 font-bold text-sm"
             style={{ background: "var(--accent)", color: "#ffffff" }}
           >
             フォームから問い合わせる
           </Link>
-          <p className="mt-2 text-xs" style={{ opacity: 0.7 }}>※ 件名に「掲載について」とご記入ください。専用メール窓口は整備中です。</p>
         </div>
       </section>
 
@@ -66,7 +65,7 @@ export default function AboutPage() {
         <h2 className="text-lg font-bold mb-2">お問い合わせ</h2>
         <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
           内容の誤り報告・ご相談は
-          <Link href="/submit" className="underline mx-1" style={{ color: "var(--accent)" }}>フォーム</Link>
+          <Link href="/contact" className="underline mx-1" style={{ color: "var(--accent)" }}>お問い合わせフォーム</Link>
           まで。まずは
           <Link href="/tools/500-rule" className="underline mx-1" style={{ color: "var(--accent)" }}>ツール</Link>
           や
