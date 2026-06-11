@@ -80,7 +80,7 @@ export default function Home() {
               <span className="inline-block">星を、<span style={{ color: "#234a78" }}>撮</span>る<span style={{ color: "#234a78" }}>。</span></span><span className="inline-block">観る<span style={{ color: "#234a78" }}>。</span></span>
             </h1>
             <p className="text-lg md:text-[19px] font-medium max-w-[600px] leading-[1.85]" style={{ color: "#2c3e58", textShadow: "0 1px 2px rgba(255,255,255,.5)" }}>
-              星空撮影の機材ガイドと撮影作例が集まる個人運営メディア。
+              星空撮影の機材ガイドと撮影作例が集まる専門メディア。
             </p>
             <p className="text-lg md:text-[19px] font-medium max-w-[600px] leading-[1.85] mb-7" style={{ color: "#2c3e58", textShadow: "0 1px 2px rgba(255,255,255,.5)" }}>
               星を「撮る・観る」ための機材の選び方・使い方と、読者の作例が集まる場所。
