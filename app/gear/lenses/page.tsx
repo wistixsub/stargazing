@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getProduct, type Product } from "@/lib/products";
-import { gearImageSrc } from "@/lib/productImages";
-import GearImage from "@/components/GearImage";
-import { LineIcon } from "@/components/icons";
-import { SITE_URL } from "@/lib/site";
-import LensCompare, { type LensCol } from "./LensCompare";
+import GearHub, { type HubItem } from "@/components/GearHub";
+import type { CompareRow } from "@/components/GearCompare";
 
 export const metadata: Metadata = {
   title: "星空向けレンズの紹介｜広角F2.8〜F1.4（単焦点・ズーム）",
@@ -14,133 +11,77 @@ export const metadata: Metadata = {
   alternates: { canonical: "/gear/lenses" },
 };
 
-const card: React.CSSProperties = {
-  background: "var(--surface)",
-  border: "1px solid var(--card-border)",
-  boxShadow: "0 8px 22px rgba(40,70,120,.06)",
+// 並列の「こんな人に向く」一言紹介（順位・段階づけはしない）
+const INTRO: Record<string, string> = {
+  "wide-fast-lens": "「もっと広く・もっと明るいレンズなら」と感じ始めた人へ。まず1本、コスパで星空専用の画角を手に入れたいときに。",
+  "sigma-14-24mm-f28": "構図の自由度が欲しい人へ。AFで昼の撮影にも使え、遠征の1本を信頼できる現行品にまとめたいときに。",
+  "sigma-14mm-f14": "ノイズをもう一段減らしたい人へ。星景を作品の柱にし、結露・ピントずれ対策まで道具に任せたいときに。",
+};
+const ORDER = ["wide-fast-lens", "sigma-14-24mm-f28", "sigma-14mm-f14"];
+const PRICE: Record<string, string> = {
+  "wide-fast-lens": "4〜5万円台",
+  "sigma-14-24mm-f28": "15万円前後",
+  "sigma-14mm-f14": "20万円台",
+};
+const FOCUS: Record<string, string> = {
+  "wide-fast-lens": "MF専用",
+  "sigma-14-24mm-f28": "AF",
+  "sigma-14mm-f14": "AF（MFLロック付）",
+};
+const MOUNT: Record<string, string> = {
+  "wide-fast-lens": "キヤノンEF・ニコンF・ソニー等",
+  "sigma-14-24mm-f28": "ソニーE / ライカL",
+  "sigma-14mm-f14": "ソニーE / ライカL",
+};
+const WEIGHT: Record<string, string> = {
+  "wide-fast-lens": "約570g",
 };
 
-// 紹介するレンズ（商品データは lib/products から引く）。
-// 一言紹介はフラット：順位・段階（入門/ステップアップ等）はつけず、「こんな人に向く」を並列で示す。
-const LENSES: { slug: string; intro: string; priceNote: string }[] = [
-  {
-    slug: "wide-fast-lens",
-    intro: "「もっと広く・もっと明るいレンズなら」と感じ始めた人へ。まず1本、コスパで星空専用の画角を手に入れたいときに。",
-    priceNote: "4〜5万円台",
-  },
-  {
-    slug: "sigma-14-24mm-f28",
-    intro: "構図の自由度が欲しい人へ。AFで昼の撮影にも使え、遠征の1本を信頼できる現行品にまとめたいときに。",
-    priceNote: "15万円前後",
-  },
-  {
-    slug: "sigma-14mm-f14",
-    intro: "ノイズをもう一段減らしたい人へ。星景を作品の柱にし、結露・ピントずれ対策まで道具に任せたいときに。",
-    priceNote: "20万円台",
-  },
-];
+export default function LensHub() {
+  const items: HubItem[] = ORDER.map((slug) => ({ p: getProduct(slug), intro: INTRO[slug] }))
+    .filter((x): x is HubItem => Boolean(x.p));
 
-export default function LensIntro() {
-  const items = LENSES.map((s) => ({ ...s, p: getProduct(s.slug) })).filter(
-    (s): s is (typeof LENSES)[number] & { p: Product } => Boolean(s.p)
-  );
-
-  // 比較表（選択式・クライアント）へ渡すプレーンデータ。表示ロジックはここで確定させる。
-  const cols: LensCol[] = items.map((s) => ({
-    slug: s.p.slug,
-    name: s.p.name.replace(/（.*?）/g, ""),
-    href: `/gear/${s.p.slug}`,
-    img: gearImageSrc(s.p) ?? undefined,
-    focal: s.p.specs[0]?.value ?? "—",
-    focus: s.p.slug === "wide-fast-lens" ? "MF専用" : s.p.slug === "sigma-14mm-f14" ? "AF（MFLロック付）" : "AF",
-    weight: s.p.slug === "wide-fast-lens" ? "約570g" : s.p.specs.find((x) => x.label === "重量")?.value ?? "—",
-    mount: s.p.slug === "wide-fast-lens" ? "キヤノンEF・ニコンF・ソニー等" : "ソニーE / ライカL",
-    price: s.priceNote,
-  }));
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "星空向けレンズ",
-    itemListElement: items.map((s, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: s.p.name,
-      url: `${SITE_URL}/gear/${s.p.slug}`,
-    })),
-  };
+  const val = (pick: (p: Product) => string) => Object.fromEntries(items.map(({ p }) => [p.slug, pick(p)]));
+  const rows: CompareRow[] = [
+    { label: "焦点距離 / F値", values: val((p) => p.specs[0]?.value ?? "—") },
+    { label: "フォーカス", values: val((p) => FOCUS[p.slug] ?? "—") },
+    { label: "重量", values: val((p) => WEIGHT[p.slug] ?? p.specs.find((x) => x.label === "重量")?.value ?? "—") },
+    { label: "マウント", values: val((p) => MOUNT[p.slug] ?? "—") },
+    { label: "実勢価格の目安", values: PRICE },
+  ];
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-10">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-
-      <nav className="text-xs" style={{ color: "var(--muted)" }} aria-label="パンくず">
-        <Link href="/" className="hover:underline">ホーム</Link> /{" "}
-        <Link href="/gear" className="hover:underline">ギア</Link> / レンズ
-      </nav>
-
-      <div className="mt-3 flex items-center gap-3">
-        <LineIcon name="lens" size={30} style={{ color: "var(--navy)" }} />
-        <h1 className="text-2xl sm:text-3xl font-bold">星空向けレンズ</h1>
-      </div>
-      <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-        星空撮影に向く広角レンズを紹介します。それぞれ「こんな人に向く」をフラットに並べました。
-        焦点距離やF値の理屈から知りたい人は<Link href="/guide/lens" className="underline mx-1" style={{ color: "var(--accent)" }}>レンズの選び方ガイド</Link>へ。
-      </p>
-
-      {/* 各レンズの紹介（並列・順位づけなし） */}
-      <div className="mt-8 grid gap-4">
-        {items.map((s) => (
-          <div key={s.slug} className="rounded-[18px] p-5 sm:p-6" style={card}>
-            <Link href={`/gear/${s.p.slug}`} className="group flex items-center gap-3">
-              <span
-                className="w-14 h-14 shrink-0 rounded-full flex items-center justify-center overflow-hidden"
-                style={{ background: "radial-gradient(circle at 50% 45%,#eaf3f3 0%,#e3eef2 55%,#dde9f0 100%)" }}
-              >
-                <GearImage src={gearImageSrc(s.p)} alt={s.p.name} icon={s.p.icon} size={52} />
-              </span>
-              <span className="min-w-0">
-                <span className="block text-sm font-bold leading-snug" style={{ color: "var(--navy)" }}>{s.p.name}</span>
-                <span className="block text-xs mt-0.5" style={{ color: "var(--muted)" }}>{s.p.tagline}</span>
-              </span>
-              <span className="ml-auto shrink-0 text-xs font-bold" style={{ color: "var(--accent)" }}>
-                詳しく <span className="inline-block transition group-hover:translate-x-1">→</span>
-              </span>
-            </Link>
-            <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--ink-soft)" }}>{s.intro}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* 比較表（選択式） */}
-      <h2 className="mt-12 text-lg font-black" style={{ color: "var(--navy)" }}>レンズを選んで比較</h2>
-      <div className="mt-4">
-        <LensCompare cols={cols} />
-      </div>
-      <p className="mt-2 text-xs" style={{ color: "var(--muted)", opacity: 0.8 }}>
-        ※ 価格は変動します。最新の実勢価格・対応マウントは購入前に必ずご確認ください。スペック出典は各商品ページに記載（メーカー公式）。
-      </p>
-
-      {/* 注意書き */}
-      <div className="mt-8 rounded-[18px] p-5 text-sm leading-relaxed" style={{ ...card, color: "var(--muted)" }}>
-        <p className="font-bold mb-2" style={{ color: "var(--navy)" }}>選ぶ前の2つの注意</p>
-        <p>
-          ・<strong style={{ color: "var(--text)" }}>APS-Cカメラの人</strong>：焦点距離は約1.5倍相当になります（14mm→約21mm相当）。画角が狭くなるぶん、星が流れない上限秒数も変わるので
-          <Link href="/tools/500-rule" className="underline mx-1" style={{ color: "var(--accent)" }}>500ルール計算機</Link>で確認を。
-        </p>
-        <p className="mt-2">
-          ・<strong style={{ color: "var(--text)" }}>キヤノンRF・ニコンZの人</strong>：今回のSIGMA 2本は対応外です。同じ考え方（F2.8ズーム／F1.4級単焦点）で純正・対応レンズから選んでください。対応マウントの選択肢は順次追加します。
-        </p>
-      </div>
-
-      <section className="mt-10 pt-6 border-t" style={{ borderColor: "var(--border)" }}>
-        <h2 className="text-xs uppercase tracking-widest mb-3" style={{ color: "var(--muted)" }}>関連</h2>
-        <ul className="space-y-2">
-          <li><Link href="/guide/lens" className="text-sm hover:underline" style={{ color: "var(--accent)" }}>星空向けレンズの選び方（焦点距離×明るさの理屈） →</Link></li>
-          <li><Link href="/guide/samyang-14mm" className="text-sm hover:underline" style={{ color: "var(--accent)" }}>SAMYANG 14mm F2.8で星空を撮る設定（撮影設定の実例） →</Link></li>
-          <li><Link href="/guide/beginner" className="text-sm hover:underline" style={{ color: "var(--accent)" }}>星空撮影の始め方【初心者完全ガイド】 →</Link></li>
-        </ul>
-      </section>
-    </div>
+    <GearHub
+      icon="lens"
+      title="星空向けレンズ"
+      breadcrumb="レンズ"
+      compareNoun="レンズ"
+      lead={
+        <>
+          星空撮影に向く広角レンズを紹介します。それぞれ「こんな人に向く」をフラットに並べました。
+          焦点距離やF値の理屈から知りたい人は
+          <Link href="/guide/lens" className="underline mx-1" style={{ color: "var(--accent)" }}>レンズの選び方ガイド</Link>へ。
+        </>
+      }
+      items={items}
+      rows={rows}
+      notes={
+        <>
+          <p className="font-bold mb-2" style={{ color: "var(--navy)" }}>選ぶ前の2つの注意</p>
+          <p>
+            ・<strong style={{ color: "var(--text)" }}>APS-Cカメラの人</strong>：焦点距離は約1.5倍相当になります（14mm→約21mm相当）。画角が狭くなるぶん、星が流れない上限秒数も変わるので
+            <Link href="/tools/500-rule" className="underline mx-1" style={{ color: "var(--accent)" }}>500ルール計算機</Link>で確認を。
+          </p>
+          <p className="mt-2">
+            ・<strong style={{ color: "var(--text)" }}>キヤノンRF・ニコンZの人</strong>：今回のSIGMA 2本は対応外です。同じ考え方（F2.8ズーム／F1.4級単焦点）で純正・対応レンズから選んでください。対応マウントの選択肢は順次追加します。
+          </p>
+        </>
+      }
+      related={[
+        { href: "/guide/lens", label: "星空向けレンズの選び方（焦点距離×明るさの理屈）" },
+        { href: "/guide/samyang-14mm", label: "SAMYANG 14mm F2.8で星空を撮る設定（撮影設定の実例）" },
+        { href: "/guide/beginner", label: "星空撮影の始め方【初心者完全ガイド】" },
+      ]}
+    />
   );
 }

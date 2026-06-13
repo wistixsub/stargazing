@@ -10,6 +10,12 @@ export const metadata: Metadata = {
     "星空撮影を目的としたギア（ポータブル赤道儀・広角レンズ・三脚・観望双眼鏡など）を、買う前の要点と具体的な使い方つきで紹介。読者の作例とあわせて選べます。",
 };
 
+// カテゴリ→専用の比較ハブ（あるものだけ）。一覧の各カテゴリ見出しに「比較して見る →」を出す。
+const CATEGORY_HUB: Partial<Record<ProductCategory, string>> = {
+  レンズ: "/gear/lenses",
+  赤道儀: "/gear/star-trackers",
+};
+
 export default function GearIndex() {
   const byCategory = CATEGORY_ORDER.map((cat) => ({
     cat,
@@ -37,9 +43,9 @@ export default function GearIndex() {
               {cat}
               <RoleBadge cat={cat} />
             </h2>
-            {cat === "レンズ" && (
-              <Link href="/gear/lenses" className="ml-auto text-xs font-bold hover:underline" style={{ color: "var(--accent)" }}>
-                レンズを比較して見る →
+            {CATEGORY_HUB[cat] && (
+              <Link href={CATEGORY_HUB[cat]!} className="ml-auto text-xs font-bold hover:underline" style={{ color: "var(--accent)" }}>
+                {cat}を比較して見る →
               </Link>
             )}
           </div>

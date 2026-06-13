@@ -3,26 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 
-// サーバー側（page.tsx）で lib/products から組み立てて渡す、表示用のプレーンデータ。
-export type LensCol = {
-  slug: string;
-  name: string; // 列見出し（短縮名）
-  href: string;
-  img?: string; // サムネイル画像URL（楽天等・任意）
-  focal: string;
-  focus: string;
-  weight: string;
-  mount: string;
-  price: string;
-};
-
-const ROWS: { label: string; key: keyof Omit<LensCol, "slug" | "name" | "href"> }[] = [
-  { label: "焦点距離 / F値", key: "focal" },
-  { label: "フォーカス", key: "focus" },
-  { label: "重量", key: "weight" },
-  { label: "マウント", key: "mount" },
-  { label: "実勢価格の目安", key: "price" },
-];
+// カテゴリ横断で使える選択式比較表。列(cols)を選んで動的に絞り込む。行(rows)はカテゴリごとに渡す。
+export type CompareCol = { slug: string; name: string; href: string; img?: string };
+export type CompareRow = { label: string; values: Record<string, string> }; // slug → 値
 
 const card: React.CSSProperties = {
   background: "var(--surface)",
@@ -30,7 +13,15 @@ const card: React.CSSProperties = {
   boxShadow: "0 8px 22px rgba(40,70,120,.06)",
 };
 
-export default function LensCompare({ cols }: { cols: LensCol[] }) {
+export default function GearCompare({
+  cols,
+  rows,
+  noun = "アイテム",
+}: {
+  cols: CompareCol[];
+  rows: CompareRow[];
+  noun?: string;
+}) {
   // 初期状態は全選択（SSGの初期HTMLに全列が載るのでSEO・JS無効でも内容が見える）。
   const [selected, setSelected] = useState<string[]>(() => cols.map((c) => c.slug));
 
@@ -43,7 +34,7 @@ export default function LensCompare({ cols }: { cols: LensCol[] }) {
 
   return (
     <div>
-      {/* 比べたいレンズを選ぶチップ */}
+      {/* 比べたい対象を選ぶチップ */}
       <div className="flex flex-wrap gap-2">
         {cols.map((c) => {
           const on = selected.includes(c.slug);
@@ -67,12 +58,12 @@ export default function LensCompare({ cols }: { cols: LensCol[] }) {
         })}
       </div>
       <p className="mt-2 text-xs" style={{ color: "var(--muted)" }}>
-        比べたいレンズを選ぶと、下の表が切り替わります（複数選択できます）。
+        比べたい{noun}を選ぶと、下の表が切り替わります（複数選択できます）。
       </p>
 
       {shown.length === 0 ? (
         <div className="mt-4 rounded-[18px] p-6 text-sm text-center" style={{ ...card, color: "var(--muted)" }}>
-          比べたいレンズを1つ以上選んでください。
+          比べたい{noun}を1つ以上選んでください。
         </div>
       ) : (
         <div className="mt-4 overflow-x-auto rounded-[18px]" style={card}>
@@ -99,14 +90,14 @@ export default function LensCompare({ cols }: { cols: LensCol[] }) {
               </tr>
             </thead>
             <tbody style={{ color: "var(--ink-soft)" }}>
-              {ROWS.map((row) => (
-                <tr key={row.key} className="border-t" style={{ borderColor: "var(--border)" }}>
+              {rows.map((row) => (
+                <tr key={row.label} className="border-t" style={{ borderColor: "var(--border)" }}>
                   <td className="px-4 py-2.5 text-xs font-semibold whitespace-nowrap" style={{ color: "var(--muted)" }}>
                     {row.label}
                   </td>
                   {shown.map((c) => (
                     <td key={c.slug} className="px-4 py-2.5">
-                      {c[row.key]}
+                      {row.values[c.slug] ?? "—"}
                     </td>
                   ))}
                 </tr>

@@ -25,6 +25,8 @@ const ENDPOINT = "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/2
 // slug, 検索語(q), 除外語(ng 任意)
 const CONFIG = [
   { slug: "portable-star-tracker", q: "ケンコー スカイメモS" },
+  { slug: "polarie-u", q: "ビクセン ポラリエU", ng: "極軸望遠鏡 PF-L 雲台ベース ステップアップキット 中古" },
+  { slug: "star-adventurer-gti", q: "スカイウォッチャー スターアドベンチャーGTi", ng: "AZ-GTi 中古" },
   { slug: "wide-fast-lens", q: "SAMYANG 14mm F2.8 ED AS IF UMC", ng: "ホルダー アダプター KANI 中古 アウトレット フィルター" },
   { slug: "sigma-14-24mm-f28", q: "SIGMA 14-24mm F2.8 DG DN" },
   { slug: "sigma-14mm-f14", q: "SIGMA 14mm F1.4 DG DN" },

@@ -19,7 +19,7 @@ import icMoon from "@/public/img/ic-moon.png";
 // ギア4カード（カテゴリ紹介→カテゴリのビューへ。専用ハブがあればハブ、無ければ /gear の該当セクション）
 // 画像は代表商品(slug)から解決（楽天取得画像→自前イラストの順）。
 const GEAR_CARDS = [
-  { title: "赤道儀", desc: "星を点で写すための必須アイテム。自動追尾で長時間露光をサポート。", slug: "portable-star-tracker", href: "/gear#mount" },
+  { title: "赤道儀", desc: "星を点で写すための必須アイテム。自動追尾で長時間露光をサポート。", slug: "portable-star-tracker", href: "/gear/star-trackers" },
   { title: "広角レンズ", desc: "天の川や星景を広く美しく写す。焦点距離の選び方を解説。", slug: "wide-fast-lens", href: "/gear/lenses" },
   { title: "三脚", desc: "安定した撮影の土台。選び方と使い方のポイント。", slug: "sturdy-tripod", href: "/gear#tripod" },
   { title: "赤色ライト", desc: "暗闇に目を慣らしながら作業できる。撮影の強い味方。", slug: "red-headlamp", href: "/gear#accessory" },
