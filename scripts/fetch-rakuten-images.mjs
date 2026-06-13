@@ -31,6 +31,8 @@ const CONFIG = [
   { slug: "sigma-14-24mm-f28", q: "SIGMA 14-24mm F2.8 DG DN" },
   { slug: "sigma-14mm-f14", q: "SIGMA 14mm F1.4 DG DN" },
   { slug: "sturdy-tripod", q: "スリック ライトカーボン E83" },
+  { slug: "airy-l100", q: "スリック エアリー L100", ng: "中古 雲台のみ" },
+  { slug: "leofoto-ls324c", q: "Leofoto LS-324C", ng: "中古 雲台 ボール 自由雲台" },
   { slug: "red-headlamp", q: "ビクセン 天体観測用ライト SG-L02" },
   { slug: "soft-filter", q: "プロソフトン クリア" },
   { slug: "astro-binoculars", q: "ビクセン アスコット ZR10×50WP" },

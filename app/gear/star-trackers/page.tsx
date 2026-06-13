@@ -69,7 +69,7 @@ export default function StarTrackerHub() {
           <p className="font-bold mb-2" style={{ color: "var(--navy)" }}>選ぶ前の2つの注意</p>
           <p>
             ・<strong style={{ color: "var(--text)" }}>三脚の剛性が前提</strong>です。軽い赤道儀でも、土台がぶれると追尾精度が活きません。搭載重量に見合う
-            <Link href="/gear#tripod" className="underline mx-1" style={{ color: "var(--accent)" }}>三脚</Link>と合わせて選んでください。
+            <Link href="/gear/tripods" className="underline mx-1" style={{ color: "var(--accent)" }}>三脚</Link>と合わせて選んでください。
           </p>
           <p className="mt-2">
             ・<strong style={{ color: "var(--text)" }}>搭載重量は「不動点からの距離」で変わります</strong>。重い望遠レンズを載せるほどバランスウェイトや上位機が必要になります。まずは手持ちのレンズ重量を基準に。

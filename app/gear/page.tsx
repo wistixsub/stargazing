@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 const CATEGORY_HUB: Partial<Record<ProductCategory, string>> = {
   レンズ: "/gear/lenses",
   赤道儀: "/gear/star-trackers",
+  三脚: "/gear/tripods",
 };
 
 export default function GearIndex() {
