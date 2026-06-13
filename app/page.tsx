@@ -97,9 +97,9 @@ export default function Home() {
               }}
             >
               <Image src={icBookmark} alt="" className="w-4 h-5 object-contain" />
-              初心者〜中級者向け
+              機材ガイド
               <span className="w-px h-4" style={{ background: "#c5cfdd" }} />
-              今日から始める星空撮影
+              撮影作例
             </div>
             <div>
               <Link
