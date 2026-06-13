@@ -18,7 +18,6 @@ export type Product = {
   name: string;
   category: ProductCategory;
   role: "主" | "副"; // 主＝星空撮影が目的のギア／副＝観望系
-  tier?: "入門" | "ステップアップ" | "本格"; // カテゴリ内のステップアップ位置（比較ハブで使用）
   icon: IconName; // 線画アイコン（components/icons.tsx・リンクカードやタグで使用）
   illustration?: string; // カード用イラスト（public/img/・トップと同じ円形カードで表示）
   image?: string; // 商品画像パス（未設定＝アイコンプレースホルダ）
@@ -87,7 +86,6 @@ export const PRODUCTS: Product[] = [
     name: "SAMYANG 14mm F2.8 ED AS IF UMC（MF超広角）",
     category: "レンズ",
     role: "主",
-    tier: "入門",
     icon: "lens",
     illustration: "/img/gear-lens.png",
     tagline: "フルサイズ対応14mm F2.8。星景の定番にして高コスパなマニュアル超広角。",
@@ -128,9 +126,8 @@ export const PRODUCTS: Product[] = [
     name: "SIGMA 14-24mm F2.8 DG DN | Art（AF超広角ズーム）",
     category: "レンズ",
     role: "主",
-    tier: "ステップアップ",
     icon: "lens",
-    tagline: "F2.8通しの超広角ズーム・795g。AFと「画角を選べる自由」を手に入れるステップアップの定番。",
+    tagline: "F2.8通しの超広角ズーム・795g。AFと「画角を選べる自由」が魅力の現行Artライン。",
     forWho: "MF単焦点で星景を覚え、構図の自由度・AF・最新の光学性能が欲しくなった人。",
     pros: [
       "14〜24mmのズームで、天の川アーチ（広く）も部分の切り取り（寄せ）も1本でこなせる",
@@ -156,7 +153,7 @@ export const PRODUCTS: Product[] = [
       { heading: "3. SSは焦点距離ごとに再計算", body: "14mmと24mmでは星が流れない上限秒数が変わる。ズームした時は500ルール計算機で出し直す。" },
     ],
     relatedGuides: [
-      { href: "/gear/lenses", label: "星空レンズのステップアップ診断" },
+      { href: "/gear/lenses", label: "星空向けレンズの紹介（比較表つき）" },
       { href: "/guide/lens", label: "星空向けレンズの選び方" },
       { href: "/tools/500-rule", label: "500ルール計算機" },
     ],
@@ -170,7 +167,6 @@ export const PRODUCTS: Product[] = [
     name: "SIGMA 14mm F1.4 DG DN | Art（星景のためのF1.4）",
     category: "レンズ",
     role: "主",
-    tier: "本格",
     icon: "lens",
     tagline: "交換レンズで唯一の14mm F1.4（メーカー発表・2023年発売）。星景撮影のために作り込まれたフラッグシップ。",
     forWho: "星景を本気の柱にする人。「ISOを下げる」「露光を短くする」の2段分に投資できる人。",
@@ -199,7 +195,7 @@ export const PRODUCTS: Product[] = [
       { heading: "3. ヒーターを標準装備に", body: "リテイナーがあるのでレンズヒーターを定位置に巻ける。結露で後半のコマを失わない運用が組める。" },
     ],
     relatedGuides: [
-      { href: "/gear/lenses", label: "星空レンズのステップアップ診断" },
+      { href: "/gear/lenses", label: "星空向けレンズの紹介（比較表つき）" },
       { href: "/guide/lens", label: "星空向けレンズの選び方" },
       { href: "/guide/settings", label: "星空撮影の設定 完全ガイド" },
     ],
