@@ -1,13 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { approvedSamples } from "@/lib/samples";
+import { getProduct } from "@/lib/products";
+import { gearImageSrc } from "@/lib/productImages";
+import GearImage from "@/components/GearImage";
 import Calc500Mini from "@/components/Calc500Mini";
 import MoonWeekStrip from "@/components/MoonWeekStrip";
 import { LineIcon } from "@/components/icons";
-import gearEq from "@/public/img/gear-eq.png";
-import gearLens from "@/public/img/gear-lens.png";
-import gearTripod from "@/public/img/gear-tripod.png";
-import gearLight from "@/public/img/gear-light.png";
 import icCamera from "@/public/img/ic-camera.png";
 import icBookmark from "@/public/img/ic-bookmark.png";
 import icBeginner from "@/public/img/ic-beginner.png";
@@ -18,11 +17,12 @@ import icCalc from "@/public/img/ic-calc.png";
 import icMoon from "@/public/img/ic-moon.png";
 
 // ギア4カード（カテゴリ紹介→カテゴリのビューへ。専用ハブがあればハブ、無ければ /gear の該当セクション）
+// 画像は代表商品(slug)から解決（楽天取得画像→自前イラストの順）。
 const GEAR_CARDS = [
-  { title: "赤道儀", desc: "星を点で写すための必須アイテム。自動追尾で長時間露光をサポート。", img: gearEq, href: "/gear#mount" },
-  { title: "広角レンズ", desc: "天の川や星景を広く美しく写す。焦点距離の選び方を解説。", img: gearLens, href: "/gear/lenses" },
-  { title: "三脚", desc: "安定した撮影の土台。選び方と使い方のポイント。", img: gearTripod, href: "/gear#tripod" },
-  { title: "赤色ライト", desc: "暗闇に目を慣らしながら作業できる。撮影の強い味方。", img: gearLight, href: "/gear#accessory" },
+  { title: "赤道儀", desc: "星を点で写すための必須アイテム。自動追尾で長時間露光をサポート。", slug: "portable-star-tracker", href: "/gear#mount" },
+  { title: "広角レンズ", desc: "天の川や星景を広く美しく写す。焦点距離の選び方を解説。", slug: "wide-fast-lens", href: "/gear/lenses" },
+  { title: "三脚", desc: "安定した撮影の土台。選び方と使い方のポイント。", slug: "sturdy-tripod", href: "/gear#tripod" },
+  { title: "赤色ライト", desc: "暗闇に目を慣らしながら作業できる。撮影の強い味方。", slug: "red-headlamp", href: "/gear#accessory" },
 ];
 
 const INTRO_ITEMS = [
@@ -123,7 +123,9 @@ export default function Home() {
       {/* ============ ギア4カード（ヒーローに重なる） ============ */}
       <section className="pb-[18px]" style={{ background: "linear-gradient(180deg,#eef4fb 0%,#f8fafd 60%,#fbfcfe 100%)" }}>
         <div className="max-w-[1680px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-[30px] px-4 sm:px-10 -mt-[58px] relative z-10">
-          {GEAR_CARDS.map((g) => (
+          {GEAR_CARDS.map((g) => {
+            const p = getProduct(g.slug);
+            return (
             <Link
               key={g.title}
               href={g.href}
@@ -134,7 +136,7 @@ export default function Home() {
                 className="w-24 h-24 shrink-0 rounded-full flex items-center justify-center overflow-hidden"
                 style={{ background: "radial-gradient(circle at 50% 45%,#eaf3f3 0%,#e3eef2 55%,#dde9f0 100%)" }}
               >
-                <Image src={g.img} alt={g.title} className="w-[88px] h-[88px] object-contain" />
+                <GearImage src={p ? gearImageSrc(p) : null} alt={g.title} icon={p?.icon ?? "camera"} size={88} />
               </span>
               <span className="block">
                 <span className="block text-[21px] font-bold tracking-wide mt-0.5 mb-2" style={{ color: "var(--navy)" }}>{g.title}</span>
@@ -144,7 +146,8 @@ export default function Home() {
                 </span>
               </span>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
 

@@ -8,6 +8,7 @@ export type LensCol = {
   slug: string;
   name: string; // 列見出し（短縮名）
   href: string;
+  img?: string; // サムネイル画像URL（楽天等・任意）
   focal: string;
   focus: string;
   weight: string;
@@ -80,8 +81,17 @@ export default function LensCompare({ cols }: { cols: LensCol[] }) {
               <tr className="text-left text-xs" style={{ color: "var(--muted)" }}>
                 <th className="px-4 py-3 font-semibold"> </th>
                 {shown.map((c) => (
-                  <th key={c.slug} className="px-4 py-3 font-bold" style={{ color: "var(--navy)" }}>
-                    <Link href={c.href} className="hover:underline">
+                  <th key={c.slug} className="px-4 py-3 font-bold align-bottom" style={{ color: "var(--navy)" }}>
+                    <Link href={c.href} className="group block hover:underline">
+                      {c.img && (
+                        <span
+                          className="mb-2 w-16 h-16 rounded-lg flex items-center justify-center overflow-hidden"
+                          style={{ background: "radial-gradient(circle at 50% 45%,#eaf3f3 0%,#e3eef2 55%,#dde9f0 100%)" }}
+                        >
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={c.img} alt={c.name} width={56} height={56} style={{ width: 56, height: 56, objectFit: "contain" }} loading="lazy" />
+                        </span>
+                      )}
                       {c.name}
                     </Link>
                   </th>

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { PRODUCTS, CATEGORY_ORDER, CATEGORY_ANCHOR, type ProductCategory } from "@/lib/products";
-import { LineIcon } from "@/components/icons";
+import { gearImageSrc } from "@/lib/productImages";
+import GearImage from "@/components/GearImage";
 
 export const metadata: Metadata = {
   title: "星空撮影ギア｜目的から選ぶ機材ガイド",
@@ -55,11 +55,7 @@ export default function GearIndex() {
                   className="w-[72px] h-[72px] shrink-0 rounded-full flex items-center justify-center overflow-hidden"
                   style={{ background: "radial-gradient(circle at 50% 45%,#eaf3f3 0%,#e3eef2 55%,#dde9f0 100%)" }}
                 >
-                  {p.illustration ? (
-                    <Image src={p.illustration} alt="" width={64} height={64} className="w-16 h-16 object-contain" />
-                  ) : (
-                    <LineIcon name={p.icon} size={34} style={{ color: "var(--navy)" }} />
-                  )}
+                  <GearImage src={gearImageSrc(p)} alt={p.name} icon={p.icon} size={64} />
                 </span>
                 <span className="block min-w-0">
                   <span className="flex items-center gap-2 mb-1">

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getProduct, type Product } from "@/lib/products";
+import { gearImageSrc } from "@/lib/productImages";
+import GearImage from "@/components/GearImage";
 import { LineIcon } from "@/components/icons";
 import { SITE_URL } from "@/lib/site";
 import LensCompare, { type LensCol } from "./LensCompare";
@@ -48,6 +50,7 @@ export default function LensIntro() {
     slug: s.p.slug,
     name: s.p.name.replace(/（.*?）/g, ""),
     href: `/gear/${s.p.slug}`,
+    img: gearImageSrc(s.p) ?? undefined,
     focal: s.p.specs[0]?.value ?? "—",
     focus: s.p.slug === "wide-fast-lens" ? "MF専用" : s.p.slug === "sigma-14mm-f14" ? "AF（MFLロック付）" : "AF",
     weight: s.p.slug === "wide-fast-lens" ? "約570g" : s.p.specs.find((x) => x.label === "重量")?.value ?? "—",
@@ -90,7 +93,12 @@ export default function LensIntro() {
         {items.map((s) => (
           <div key={s.slug} className="rounded-[18px] p-5 sm:p-6" style={card}>
             <Link href={`/gear/${s.p.slug}`} className="group flex items-center gap-3">
-              <LineIcon name="lens" size={24} className="shrink-0" style={{ color: "var(--navy)" }} />
+              <span
+                className="w-14 h-14 shrink-0 rounded-full flex items-center justify-center overflow-hidden"
+                style={{ background: "radial-gradient(circle at 50% 45%,#eaf3f3 0%,#e3eef2 55%,#dde9f0 100%)" }}
+              >
+                <GearImage src={gearImageSrc(s.p)} alt={s.p.name} icon={s.p.icon} size={52} />
+              </span>
               <span className="min-w-0">
                 <span className="block text-sm font-bold leading-snug" style={{ color: "var(--navy)" }}>{s.p.name}</span>
                 <span className="block text-xs mt-0.5" style={{ color: "var(--muted)" }}>{s.p.tagline}</span>

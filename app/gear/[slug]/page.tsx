@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PRODUCTS, getProduct } from "@/lib/products";
-import { LineIcon } from "@/components/icons";
+import { gearImageSrc } from "@/lib/productImages";
+import GearImage from "@/components/GearImage";
 import { getSamplesByGear } from "@/lib/samples";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { NETWORKS, affiliateClickUrl, impressionUrl } from "@/lib/affiliate";
@@ -29,6 +29,7 @@ export default async function GearDetail({ params }: { params: Promise<{ slug: s
 
   const samples = getSamplesByGear(p.slug);
   const url = `${SITE_URL}/gear/${p.slug}`;
+  const imageSrc = gearImageSrc(p);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -61,19 +62,15 @@ export default async function GearDetail({ params }: { params: Promise<{ slug: s
         <Link href="/gear" className="hover:underline">ギア</Link> / {p.category}
       </nav>
 
-      <div className="mt-3 flex items-center gap-3">
-        <span
-          className="w-12 h-12 shrink-0 rounded-full flex items-center justify-center overflow-hidden"
-          style={{ background: "radial-gradient(circle at 50% 45%,#eaf3f3 0%,#e3eef2 55%,#dde9f0 100%)" }}
+      {imageSrc && (
+        <div
+          className="mt-4 rounded-2xl flex items-center justify-center p-6"
+          style={{ background: "radial-gradient(circle at 50% 40%,#eef4fb 0%,#e6eef4 55%,#dde9f0 100%)" }}
         >
-          {p.illustration ? (
-            <Image src={p.illustration} alt="" width={42} height={42} className="w-[42px] h-[42px] object-contain" />
-          ) : (
-            <LineIcon name={p.icon} size={26} style={{ color: "var(--navy)" }} />
-          )}
-        </span>
-        <h1 className="text-2xl sm:text-3xl font-bold leading-tight">{p.name}</h1>
-      </div>
+          <GearImage src={imageSrc} alt={p.name} icon={p.icon} size={240} />
+        </div>
+      )}
+      <h1 className="mt-4 text-2xl sm:text-3xl font-bold leading-tight">{p.name}</h1>
       <p className="mt-3 leading-relaxed" style={{ color: "var(--muted)" }}>{p.tagline}</p>
       <p className="mt-2 text-sm rounded-md px-3 py-2" style={{ background: "var(--surface2)", color: "var(--muted)" }}>
         <span style={{ color: "var(--accent)" }}>こんな人向け：</span>{p.forWho}
