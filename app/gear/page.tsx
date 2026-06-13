@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { PRODUCTS, CATEGORY_ORDER, type ProductCategory } from "@/lib/products";
+import { PRODUCTS, CATEGORY_ORDER, CATEGORY_ANCHOR, type ProductCategory } from "@/lib/products";
 import { LineIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -31,7 +31,7 @@ export default function GearIndex() {
       </p>
 
       {byCategory.map(({ cat, items }) => (
-        <section key={cat} className="mt-8">
+        <section key={cat} id={CATEGORY_ANCHOR[cat]} className="mt-8 scroll-mt-24">
           <div className="flex items-center mb-3">
             <h2 className="text-xs uppercase tracking-widest" style={{ color: "var(--muted)" }}>
               {cat}

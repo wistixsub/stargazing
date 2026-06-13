@@ -413,3 +413,14 @@ export function getProduct(slug: string): Product | undefined {
 }
 
 export const CATEGORY_ORDER: ProductCategory[] = ["赤道儀", "レンズ", "三脚", "カメラ", "アクセサリ", "観望"];
+
+// カテゴリ→ギア一覧（/gear）の該当セクションのアンカーid。
+// トップページ等のカテゴリカードのリンク先に使う（専用ハブが無いカテゴリは /gear#<anchor> に着地させる）。
+export const CATEGORY_ANCHOR: Record<ProductCategory, string> = {
+  赤道儀: "mount",
+  レンズ: "lens",
+  三脚: "tripod",
+  カメラ: "camera",
+  アクセサリ: "accessory",
+  観望: "observe",
+};

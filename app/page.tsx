@@ -17,12 +17,12 @@ import icTechnique from "@/public/img/ic-technique.png";
 import icCalc from "@/public/img/ic-calc.png";
 import icMoon from "@/public/img/ic-moon.png";
 
-// ギア4カード（カテゴリ紹介→各商品ページへ）
+// ギア4カード（カテゴリ紹介→カテゴリのビューへ。専用ハブがあればハブ、無ければ /gear の該当セクション）
 const GEAR_CARDS = [
-  { title: "赤道儀", desc: "星を点で写すための必須アイテム。自動追尾で長時間露光をサポート。", img: gearEq, href: "/gear/portable-star-tracker" },
-  { title: "広角レンズ", desc: "天の川や星景を広く美しく写す。焦点距離の選び方を解説。", img: gearLens, href: "/gear/wide-fast-lens" },
-  { title: "三脚", desc: "安定した撮影の土台。選び方と使い方のポイント。", img: gearTripod, href: "/gear/sturdy-tripod" },
-  { title: "赤色ライト", desc: "暗闇に目を慣らしながら作業できる。撮影の強い味方。", img: gearLight, href: "/gear/red-headlamp" },
+  { title: "赤道儀", desc: "星を点で写すための必須アイテム。自動追尾で長時間露光をサポート。", img: gearEq, href: "/gear#mount" },
+  { title: "広角レンズ", desc: "天の川や星景を広く美しく写す。焦点距離の選び方を解説。", img: gearLens, href: "/gear/lenses" },
+  { title: "三脚", desc: "安定した撮影の土台。選び方と使い方のポイント。", img: gearTripod, href: "/gear#tripod" },
+  { title: "赤色ライト", desc: "暗闇に目を慣らしながら作業できる。撮影の強い味方。", img: gearLight, href: "/gear#accessory" },
 ];
 
 const INTRO_ITEMS = [
