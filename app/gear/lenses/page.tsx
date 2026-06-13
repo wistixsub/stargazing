@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getProduct, type Product } from "@/lib/products";
 import { LineIcon } from "@/components/icons";
 import { SITE_URL } from "@/lib/site";
+import LensCompare, { type LensCol } from "./LensCompare";
 
 export const metadata: Metadata = {
   title: "星空向けレンズの紹介｜広角F2.8〜F1.4（単焦点・ズーム）",
@@ -41,6 +42,18 @@ export default function LensIntro() {
   const items = LENSES.map((s) => ({ ...s, p: getProduct(s.slug) })).filter(
     (s): s is (typeof LENSES)[number] & { p: Product } => Boolean(s.p)
   );
+
+  // 比較表（選択式・クライアント）へ渡すプレーンデータ。表示ロジックはここで確定させる。
+  const cols: LensCol[] = items.map((s) => ({
+    slug: s.p.slug,
+    name: s.p.name.replace(/（.*?）/g, ""),
+    href: `/gear/${s.p.slug}`,
+    focal: s.p.specs[0]?.value ?? "—",
+    focus: s.p.slug === "wide-fast-lens" ? "MF専用" : s.p.slug === "sigma-14mm-f14" ? "AF（MFLロック付）" : "AF",
+    weight: s.p.slug === "wide-fast-lens" ? "約570g" : s.p.specs.find((x) => x.label === "重量")?.value ?? "—",
+    mount: s.p.slug === "wide-fast-lens" ? "キヤノンEF・ニコンF・ソニー等" : "ソニーE / ライカL",
+    price: s.priceNote,
+  }));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -91,44 +104,10 @@ export default function LensIntro() {
         ))}
       </div>
 
-      {/* 比較表 */}
-      <h2 className="mt-12 text-lg font-black" style={{ color: "var(--navy)" }}>レンズの比較</h2>
-      <div className="mt-4 overflow-x-auto rounded-[18px]" style={card}>
-        <table className="w-full text-sm" style={{ minWidth: 560 }}>
-          <thead>
-            <tr className="text-left text-xs" style={{ color: "var(--muted)" }}>
-              <th className="px-4 py-3 font-semibold"> </th>
-              {items.map((s) => (
-                <th key={s.slug} className="px-4 py-3 font-bold" style={{ color: "var(--navy)" }}>
-                  <Link href={`/gear/${s.p.slug}`} className="hover:underline">
-                    {s.p.name.replace(/（.*?）/g, "")}
-                  </Link>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody style={{ color: "var(--ink-soft)" }}>
-            {[
-              { label: "焦点距離 / F値", get: (p: Product) => p.specs[0]?.value ?? "—" },
-              { label: "フォーカス", get: (p: Product) => (p.slug === "wide-fast-lens" ? "MF専用" : p.slug === "sigma-14mm-f14" ? "AF（MFLロック付）" : "AF") },
-              { label: "重量", get: (p: Product) => (p.slug === "wide-fast-lens" ? "約570g" : p.specs.find((x) => x.label === "重量")?.value ?? "—") },
-              { label: "マウント", get: (p: Product) => (p.slug === "wide-fast-lens" ? "キヤノンEF・ニコンF・ソニー等" : "ソニーE / ライカL") },
-            ].map((row) => (
-              <tr key={row.label} className="border-t" style={{ borderColor: "var(--border)" }}>
-                <td className="px-4 py-2.5 text-xs font-semibold whitespace-nowrap" style={{ color: "var(--muted)" }}>{row.label}</td>
-                {items.map((s) => (
-                  <td key={s.slug} className="px-4 py-2.5">{row.get(s.p)}</td>
-                ))}
-              </tr>
-            ))}
-            <tr className="border-t" style={{ borderColor: "var(--border)" }}>
-              <td className="px-4 py-2.5 text-xs font-semibold whitespace-nowrap" style={{ color: "var(--muted)" }}>実勢価格の目安</td>
-              {items.map((s) => (
-                <td key={s.slug} className="px-4 py-2.5">{s.priceNote}</td>
-              ))}
-            </tr>
-          </tbody>
-        </table>
+      {/* 比較表（選択式） */}
+      <h2 className="mt-12 text-lg font-black" style={{ color: "var(--navy)" }}>レンズを選んで比較</h2>
+      <div className="mt-4">
+        <LensCompare cols={cols} />
       </div>
       <p className="mt-2 text-xs" style={{ color: "var(--muted)", opacity: 0.8 }}>
         ※ 価格は変動します。最新の実勢価格・対応マウントは購入前に必ずご確認ください。スペック出典は各商品ページに記載（メーカー公式）。
