@@ -4,7 +4,7 @@
 
 import type { IconName } from "@/components/icons";
 
-export type ProductCategory = "赤道儀" | "レンズ" | "三脚" | "カメラ" | "アクセサリ" | "観望";
+export type ProductCategory = "赤道儀" | "レンズ" | "三脚" | "カメラ" | "赤色ライト" | "アクセサリ" | "観望";
 
 /** 購入先リンク（url未設定＝アフィリ提携前／募集中。虚偽の在庫・価格表示はしない）。 */
 export type PurchaseLink = { label: string; url?: string };
@@ -420,7 +420,7 @@ export const PRODUCTS: Product[] = [
   {
     slug: "red-headlamp",
     name: "ビクセン 天体観測用ライト SG-L02",
-    category: "アクセサリ",
+    category: "赤色ライト",
     role: "主",
     icon: "flashlight",
     illustration: "/img/gear-light.png",
@@ -450,6 +450,7 @@ export const PRODUCTS: Product[] = [
       { heading: "3. 撮影中は消す", body: "長秒露光中は消灯。レンズ前を横切る光はカブリの原因。" },
     ],
     relatedGuides: [
+      { href: "/gear/red-lights", label: "星空向け赤色ライトの比較" },
       { href: "/guide/sg-l02", label: "赤色ライトはなぜ必要か：本機のガイド" },
       { href: "/guide/settings", label: "星空撮影の設定 完全ガイド" },
       { href: "/guide/binoculars-vs-telescope", label: "双眼鏡 vs 望遠鏡" },
@@ -458,6 +459,93 @@ export const PRODUCTS: Product[] = [
     affiliateKeyword: "ビクセン 天体観測用ライト SG-L02",
     verified: true,
     sourceUrl: "https://www.vixen.co.jp/product/71089_8/",
+  },
+  {
+    slug: "bd-spot-400",
+    name: "ブラックダイヤモンド スポット400（赤色ナイトビジョン搭載ヘッドランプ）",
+    category: "赤色ライト",
+    role: "主",
+    icon: "flashlight",
+    tagline: "白色400lm＋白色を経由せず点く赤色ナイトビジョン。IPX8防水で登山とも兼用できる定番ヘッドランプ。",
+    forWho: "設営から観測・撤収まで1台で回したい人。登山・キャンプと兼用したい人。",
+    pros: [
+      "赤色ナイトビジョンが白色を経由せず点灯＝暗順応を崩さずに使える",
+      "白色は最大400lmと強力で、設営・撤収・足元の確保にも困らない",
+      "IPX8（水深1.1m・30分）の高い防水性。夜露や急な雨でも安心",
+      "明るさメモリー・ロックモード搭載で、ザックの中での誤点灯を防げる",
+    ],
+    cons: [
+      "ヘッドランプとして標準的な78g。SG-L02のような超軽量ではない",
+      "赤色は最小光量をSG-L02ほど絞れない（観測席での微光用途は専用機が上）",
+      "単4形電池×3本（付属）。長時間・充電運用はBD1500充電池（別売）が前提",
+    ],
+    specs: [
+      { label: "白色 最大", value: "400ルーメン" },
+      { label: "赤色", value: "赤色ナイトビジョン（白色を経由せず点灯）" },
+      { label: "点灯時間", value: "High 約2.5時間／Low 約200時間（アルカリ）" },
+      { label: "電源", value: "単4形アルカリ電池×3本（付属）／BD1500充電池（別売）対応" },
+      { label: "防水", value: "IPX8（水深1.1m・30分）" },
+      { label: "重量", value: "78g（電池込）" },
+      { label: "機能", value: "調光・ストロボ・ロック・明るさメモリー" },
+    ],
+    usage: [
+      { heading: "1. 最初から赤色で点ける", body: "白色を経由せず赤色で点灯できる。現場に着いたら赤色で点け、暗順応を保つ。" },
+      { heading: "2. 白色は設営・撤収だけ", body: "強力な白色400lmは作業時に。観測・撮影中は赤色へ戻す。" },
+      { heading: "3. 移動時はロック", body: "ロックモードでザック内の誤点灯を防ぎ、電池切れを避ける。" },
+    ],
+    relatedGuides: [
+      { href: "/gear/red-lights", label: "星空向け赤色ライトの比較" },
+      { href: "/guide/sg-l02", label: "赤色ライトはなぜ必要か" },
+      { href: "/guide/camp-stargazing", label: "キャンプで星空観察・撮影" },
+      { href: "/guide/settings", label: "星空撮影の設定 完全ガイド" },
+    ],
+    purchase: [{ label: "購入先（提携準備中）" }],
+    affiliateKeyword: "Black Diamond スポット400",
+    verified: true,
+    sourceUrl: "https://www.lostarrow.co.jp/store/g/gBD81308004/",
+  },
+  {
+    slug: "gentos-ws243hd",
+    name: "ジェントス WS-243HD（赤色サブLED搭載ヘッドライト）",
+    category: "赤色ライト",
+    role: "主",
+    icon: "flashlight",
+    tagline: "白色最大580lm＋赤色サブLED。フォーカス調整つきで現地電池交換もできる、国産コスパのヘッドライト。",
+    forWho: "コスパ重視で白色の明るさも欲しい人。現地で電池交換できる安心を取りたい人。",
+    pros: [
+      "白色は最大580lmと明るく、フォーカス（スポット⇄ワイド）を無段階で調整できる",
+      "赤色サブLEDで、メインが明るすぎる手元作業に切り替えられる",
+      "単4形アルカリ電池×3本で動く＝現地での電池交換が容易（専用充電池にも対応）",
+      "国産ブランドで入手しやすく、コスパが高い",
+    ],
+    cons: [
+      "赤色はサブLED（約10lm・固定）。SG-L02のような微光無段階調光ではない",
+      "防水はIP64（耐塵・防滴）。水没耐性まで欲しいならIPX8級が安心",
+      "118gとヘッドランプ型では重め",
+    ],
+    specs: [
+      { label: "白色 明るさ", value: "High 580lm／Mid 260lm／Eco 35lm" },
+      { label: "赤色サブLED", value: "約10lm（点灯 約19時間／点滅 約40時間）" },
+      { label: "点灯時間", value: "High 約2.5時間／Mid 約5.5時間／Eco 約25時間" },
+      { label: "電源", value: "単4形アルカリ電池×3本／専用Li-po充電池 3.7V 800mAh（別売）" },
+      { label: "防水", value: "IP64（耐塵・防滴）" },
+      { label: "重量", value: "118g（電池含む）" },
+      { label: "機能", value: "フォーカスコントロール（無段階）" },
+    ],
+    usage: [
+      { heading: "1. 観測中は赤色サブLEDで", body: "白色は暗順応を崩す。観測・撮影中は赤色サブLEDに切り替える。" },
+      { heading: "2. フォーカスを使い分ける", body: "足元・手元はワイド、遠くを確認するときはスポットへ無段階に調整する。" },
+      { heading: "3. 予備の単4を持つ", body: "現地で電池交換できるのが強み。長丁場は予備電池を携行する。" },
+    ],
+    relatedGuides: [
+      { href: "/gear/red-lights", label: "星空向け赤色ライトの比較" },
+      { href: "/guide/sg-l02", label: "赤色ライトはなぜ必要か" },
+      { href: "/guide/settings", label: "星空撮影の設定 完全ガイド" },
+    ],
+    purchase: [{ label: "購入先（提携準備中）" }],
+    affiliateKeyword: "GENTOS WS-243HD",
+    verified: true,
+    sourceUrl: "https://www.gentos.jp/products/series/w_star/ws-243hd/",
   },
   {
     slug: "intervalometer-release",
@@ -579,7 +667,7 @@ export function getProduct(slug: string): Product | undefined {
   return PRODUCTS.find((p) => p.slug === slug);
 }
 
-export const CATEGORY_ORDER: ProductCategory[] = ["赤道儀", "レンズ", "三脚", "カメラ", "アクセサリ", "観望"];
+export const CATEGORY_ORDER: ProductCategory[] = ["赤道儀", "レンズ", "三脚", "カメラ", "赤色ライト", "アクセサリ", "観望"];
 
 // カテゴリ→ギア一覧（/gear）の該当セクションのアンカーid。
 // トップページ等のカテゴリカードのリンク先に使う（専用ハブが無いカテゴリは /gear#<anchor> に着地させる）。
@@ -588,6 +676,7 @@ export const CATEGORY_ANCHOR: Record<ProductCategory, string> = {
   レンズ: "lens",
   三脚: "tripod",
   カメラ: "camera",
+  赤色ライト: "red-light",
   アクセサリ: "accessory",
   観望: "observe",
 };

@@ -15,6 +15,7 @@ const CATEGORY_HUB: Partial<Record<ProductCategory, string>> = {
   レンズ: "/gear/lenses",
   赤道儀: "/gear/star-trackers",
   三脚: "/gear/tripods",
+  赤色ライト: "/gear/red-lights",
 };
 
 export default function GearIndex() {
