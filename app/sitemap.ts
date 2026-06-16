@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { p: "/guide/settings", cf: "monthly", pr: 0.8 },
     { p: "/guide/milkyway-season", cf: "monthly", pr: 0.8 },
     { p: "/guide/perseids-2026", cf: "weekly", pr: 0.9 },
+    { p: "/guide/tanabata-milkyway", cf: "weekly", pr: 0.9 },
     { p: "/guide/smartphone", cf: "monthly", pr: 0.8 },
     { p: "/guide/lens", cf: "monthly", pr: 0.8 },
     { p: "/guide/star-tracker", cf: "monthly", pr: 0.8 },

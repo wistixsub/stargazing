@@ -12,6 +12,7 @@ const GUIDES: { e: IconName; t: string; g: string; href?: string }[] = [
   { e: "sliders", t: "星空撮影の設定 完全ガイド（ISO・絞り・SS）", g: "撮る", href: "/guide/settings" },
   { e: "milkyway", t: "天の川が見える時期と方角", g: "撮る", href: "/guide/milkyway-season" },
   { e: "constellation", t: "ペルセウス座流星群2026の見頃と観察・撮影ガイド", g: "観る", href: "/guide/perseids-2026" },
+  { e: "milkyway", t: "七夕に天の川は見える？ 本当の見頃と星の見つけ方", g: "観る", href: "/guide/tanabata-milkyway" },
   { e: "smartphone", t: "スマホで星空を撮る方法", g: "撮る", href: "/guide/smartphone" },
   { e: "smartphone", t: "キャンプで星空を撮る方法（スマホ＋数千円から）", g: "撮る", href: "/guide/camp-stargazing" },
   { e: "lens", t: "星空向けレンズの選び方（焦点距離×明るさ）", g: "撮る", href: "/guide/lens" },
