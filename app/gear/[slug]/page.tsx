@@ -5,7 +5,7 @@ import { PRODUCTS, getProduct } from "@/lib/products";
 import { gearImageSrc } from "@/lib/productImages";
 import GearImage from "@/components/GearImage";
 import { getSamplesByGear } from "@/lib/samples";
-import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
 import { NETWORKS, affiliateClickUrl, impressionUrl } from "@/lib/affiliate";
 
 export function generateStaticParams() {
@@ -31,25 +31,17 @@ export default async function GearDetail({ params }: { params: Promise<{ slug: s
   const url = `${SITE_URL}/gear/${p.slug}`;
   const imageSrc = gearImageSrc(p);
 
+  // 構造化データはパンくず（BreadcrumbList）のみ。
+  // Product は出さない：本サイトは販売ページでなくガイドメディアで、価格・レビュー評価を持たない方針
+  // （lib/products.ts の「価格は捏造しない」）。Googleの Product snippet は offers/review/aggregateRating
+  // のいずれか必須のため、データを持たない当サイトでは Product を付けるとエラーになる。
   const jsonLd = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Product",
-        name: p.name,
-        category: p.category,
-        description: p.tagline,
-        ...(p.image ? { image: `${SITE_URL}${p.image}` } : {}),
-        brand: { "@type": "Brand", name: SITE_NAME },
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "ホーム", item: SITE_URL },
-          { "@type": "ListItem", position: 2, name: "ギア", item: `${SITE_URL}/gear` },
-          { "@type": "ListItem", position: 3, name: p.name, item: url },
-        ],
-      },
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ホーム", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "ギア", item: `${SITE_URL}/gear` },
+      { "@type": "ListItem", position: 3, name: p.name, item: url },
     ],
   };
 
