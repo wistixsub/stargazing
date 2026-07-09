@@ -25,6 +25,22 @@ const GEAR_CARDS = [
   { title: "赤色ライト", desc: "暗闇に目を慣らしながら作業できる。撮影の強い味方。", slug: "red-headlamp", href: "/gear#accessory" },
 ];
 
+// 今シーズンの見頃（季節が変わったら差し替える。空にすればセクションごと非表示）
+const SEASONAL_ITEMS = [
+  {
+    date: "8/12〜13 極大",
+    title: "ペルセウス座流星群2026",
+    desc: "新月と重なる当たり年。月明かりゼロの空で1時間に最大50個超。見方・撮り方を解説。",
+    href: "/guide/perseids-2026",
+  },
+  {
+    date: "8/19 伝統的七夕",
+    title: "七夕に天の川は見える？",
+    desc: "新暦7/7は梅雨のさなか。本当の見頃は旧暦の七夕。織姫・彦星の見つけ方も。",
+    href: "/guide/tanabata-milkyway",
+  },
+];
+
 const INTRO_ITEMS = [
   { icon: icStart, title: "星空撮影の始め方", desc: "持ち物・場所・設定を1ページで", href: "/guide/beginner" },
   { icon: icGear, title: "機材の選び方", desc: "予算別のおすすめ構成", href: "/gear" },
@@ -150,6 +166,41 @@ export default function Home() {
           })}
         </div>
       </section>
+
+      {/* ============ 今シーズンの見頃 ============ */}
+      {SEASONAL_ITEMS.length > 0 && (
+        <section className="max-w-[1680px] mx-auto px-4 sm:px-10 pt-10">
+          <div className="flex items-center gap-3.5 mb-5 flex-wrap">
+            <span className="text-[26px]" aria-hidden="true">🌠</span>
+            <h2 className="text-[26px] font-black tracking-wide" style={{ color: "var(--navy)" }}>今シーズンの見頃</h2>
+            <span className="text-[13.5px] font-medium" style={{ color: "var(--muted2)" }}>この夏、空を見上げたくなる話題</span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {SEASONAL_ITEMS.map((s) => (
+              <Link
+                key={s.href}
+                href={s.href}
+                className="group rounded-[18px] px-6 sm:px-7 py-6 transition hover:-translate-y-1"
+                style={{ background: "var(--surface)", border: "1px solid var(--card-border)", boxShadow: cardShadow }}
+              >
+                <span
+                  className="inline-block rounded-full px-3 py-1 text-xs font-bold mb-3"
+                  style={{ background: "#eaf2fb", color: "#2360a3", border: "1px solid #d3e3f5" }}
+                >
+                  {s.date}
+                </span>
+                <span className="block text-[19px] font-bold mb-2 transition group-hover:text-[var(--accent)]" style={{ color: "var(--navy)" }}>
+                  {s.title}
+                </span>
+                <span className="block text-sm leading-relaxed mb-3" style={{ color: "var(--muted)" }}>{s.desc}</span>
+                <span className="inline-flex items-center gap-2 font-bold text-sm" style={{ color: "var(--accent)" }}>
+                  読む <span className="transition group-hover:translate-x-1">→</span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ============ コンテンツ（作例ギャラリー＋はじめての方へ｜便利ツール） ============ */}
       <div className="max-w-[1680px] mx-auto grid grid-cols-1 xl:grid-cols-[1fr_432px] gap-10 px-4 sm:px-10 pt-12 pb-14">
