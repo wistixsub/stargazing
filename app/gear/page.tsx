@@ -5,9 +5,9 @@ import { gearImageSrc } from "@/lib/productImages";
 import GearImage from "@/components/GearImage";
 
 export const metadata: Metadata = {
-  title: "星空撮影ギア｜目的から選ぶ機材ガイド",
+  title: "星空撮影ギア｜天体写真の機材を目的から選ぶ",
   description:
-    "星空撮影を目的としたギア（ポータブル赤道儀・広角レンズ・三脚・観望双眼鏡など）を、買う前の要点と具体的な使い方つきで紹介。読者の作例とあわせて選べます。",
+    "星空撮影・天体写真を始めるための機材（ポータブル赤道儀・広角レンズ・三脚・観望双眼鏡など）を、買う前の要点と具体的な使い方つきで紹介。読者の作例とあわせて選べます。",
 };
 
 // カテゴリ→専用の比較ハブ（あるものだけ）。一覧の各カテゴリ見出しに「比較して見る →」を出す。
@@ -29,7 +29,7 @@ export default function GearIndex() {
       <h1 className="text-2xl sm:text-3xl font-bold">星空撮影ギア</h1>
       <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
         「何を買えばいいか」の1歩目と、「買ったあとの使い方」をセットで。
-        星空撮影を目的としたギアを、要点・注意点・実際の使い方つきで紹介します。
+        星空撮影・天体写真を目的としたギアを、要点・注意点・実際の使い方つきで紹介します。
         各機材には読者の<Link href="/gallery" className="underline mx-0.5" style={{ color: "var(--accent)" }}>作例</Link>も紐づきます。
       </p>
 

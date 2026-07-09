@@ -10,7 +10,7 @@ const PRODUCT_LM = "2026-06-17"; // 商品詳細テンプレ最終更新（Produ
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths: { p: string; cf: "weekly" | "monthly"; pr: number; lm: string }[] = [
     { p: "/", cf: "weekly", pr: 1, lm: "2026-07-09" },
-    { p: "/gear", cf: "weekly", pr: 0.9, lm: "2026-06-15" },
+    { p: "/gear", cf: "weekly", pr: 0.9, lm: "2026-07-09" },
     { p: "/gear/lenses", cf: "monthly", pr: 0.8, lm: "2026-06-14" },
     { p: "/gear/star-trackers", cf: "monthly", pr: 0.8, lm: "2026-06-14" },
     { p: "/gear/tripods", cf: "monthly", pr: 0.8, lm: "2026-06-14" },
